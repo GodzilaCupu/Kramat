@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static void SetSettings(string key, float value) => PlayerPrefs.SetFloat(key, value);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static float GetSettings(string key) => PlayerPrefs.GetFloat(key);
 }
