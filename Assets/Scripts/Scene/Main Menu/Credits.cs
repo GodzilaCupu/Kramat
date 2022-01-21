@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Credits : MonoBehaviour
 {
-
+    private GameObject credits;
+    private LeanTweenType lean;
 }
