@@ -60,7 +60,6 @@ public class MainMenuManager : MonoBehaviour
                     break;
             }
 
-
     }
 
     private void SetAllComponentValue()
@@ -68,6 +67,9 @@ public class MainMenuManager : MonoBehaviour
         titleTXT.text = titleSTRING;
 
         // RenderTexture Harus di sesuaikan dengan resolusi Video Asli
+
+        if (Data.GetPlayerData("PlayTime") == 0) menuBTN[1].gameObject.SetActive(false);
+        else menuBTN[1].gameObject.SetActive(true);
     }
 
     private void ContinueProgres()
@@ -77,6 +79,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void PlayProgres()
     {
+        Data.SetPlayerData("PlayTime", 1);
         //Start new Progress()
     }
 
