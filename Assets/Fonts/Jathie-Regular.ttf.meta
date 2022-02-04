@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4788c3d0931f13548b048a969ede2c8d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Jathie
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d5fe599f0b1cb1e4facfd4cbab6af65a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

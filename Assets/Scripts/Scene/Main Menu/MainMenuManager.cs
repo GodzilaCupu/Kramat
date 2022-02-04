@@ -1,95 +1,57 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("Title")]
-    [SerializeField] private TextMeshProUGUI titleTXT;
-    [SerializeField] private string titleSTRING;
-    //[SerializeField] private Image titleIMG;
-    //[SerializeField] private Sprite titleSPRITE;
+    [Header("Main Menu Component")]
+    [SerializeField] List<Button> btnMainMenu;
+    [SerializeField] List<GameObject> panelMainMenu;
 
-    [Header("Buttons")]
-    [SerializeField] private Button[] menuBTN;
-    [SerializeField] private bool panelGetOpen; 
-    public bool getPanelValue { get { return panelGetOpen; } }
-
+    [Header("Script Reference")]
+    [SerializeField] SettingsManager settingsManager;
 
     private void Awake()
     {
-        GetAllComponentObject();
+        MainMenuValue();
     }
 
-    private void Start()
+    void MainMenuValue()
     {
-        SetAllComponentValue();
-    }
+        settingsManager.SettingsValue();
 
-    private void GetAllComponentObject()
-    {
-        titleTXT = GameObject.Find("Title").GetComponent<TextMeshProUGUI>();
-        //titleIMG = GameObject.Find("Title").GetComponent<Image>();
+        if (Data.GetPlayerData("PlayerCount") == 0 || Data.GetPlayerData("PlayerCount") < 1)
+            btnMainMenu[1].gameObject.SetActive(false);
+        else
+            btnMainMenu[1].gameObject.SetActive(true);
 
-        
-        for(int i = 0; i<menuBTN.Length;i++)
+        for (int i =0;i<btnMainMenu.Count;i++)
             switch (i)
             {
                 case 0:
-                    menuBTN[0].onClick.AddListener(() => ContinueProgres());
+                    btnMainMenu[0].onClick.AddListener(() => Debug.Log("New Game Test"));
+                    Data.SetPlayerData("PlayerCount", 1);
                     break;
 
                 case 1:
-                    menuBTN[1].onClick.AddListener(() => PlayProgres());
+                    btnMainMenu[1].onClick.AddListener(() => Debug.Log("Continue"));
                     break;
 
                 case 2:
-                    menuBTN[2].onClick.AddListener(()=> OpenSettings());
+                    btnMainMenu[2].onClick.AddListener(() => settingsManager.OpenSettingsPanel());
                     break;
 
                 case 3:
-                    menuBTN[3].onClick.AddListener(() => OpenCredits());
+                    btnMainMenu[3].onClick.AddListener(() => MainPanelActivator(2, true));
                     break;
 
                 case 4:
-                    menuBTN[4].onClick.AddListener(() => Application.Quit());
+                    btnMainMenu[4].onClick.AddListener(() => Application.Quit());
+                    Debug.Log("Quit Game");
                     break;
             }
-
     }
 
-    private void SetAllComponentValue()
-    {
-        titleTXT.text = titleSTRING;
-
-        // RenderTexture Harus di sesuaikan dengan resolusi Video Asli
-
-        if (Data.GetPlayerData("PlayTime") == 0) menuBTN[1].gameObject.SetActive(false);
-        else menuBTN[1].gameObject.SetActive(true);
-    }
-
-    private void ContinueProgres()
-    {
-        //Continue LastCheckPoint()
-    }
-
-    private void PlayProgres()
-    {
-        Data.SetPlayerData("PlayTime", 1);
-        //Start new Progress()
-    }
-
-    private void OpenSettings()
-    {
-        //To Control Panel Settings Get Open;
-    }
-
-    private void OpenCredits()
-    {
-        //To Control Panel Credits Get Open;
-    }
+    public void MainPanelActivator(int indexPanel, bool condition) => panelMainMenu[indexPanel].SetActive(condition);
 }
