@@ -65,7 +65,7 @@ public class PathSplineEndless : MonoBehaviour {
 				trackIter++;
 				playSwish();
 			}
-			// Move the internal local x of the car to simulate changing tracks
+			// move the internal local x of the car to simulate changing tracks
 			LeanTween.moveLocalX(carInternal, (trackIter-1)*6f, 0.3f).setEase(LeanTweenType.easeOutBack);
 		}
 	}

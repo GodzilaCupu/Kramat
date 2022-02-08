@@ -438,7 +438,7 @@ public class LeanTween : MonoBehaviour {
 
 
 
-    public static void removeTween( int i, int uniqueId){ // Only removes the tween if the unique id matches <summary>Move a GameObject to a certain location</summary>
+    public static void removeTween( int i, int uniqueId){ // Only removes the tween if the unique id matches <summary>move a GameObject to a certain location</summary>
         if(tweens[i].uniqueId==uniqueId){
             removeTween( i );
         }
@@ -1254,7 +1254,7 @@ public class LeanTween : MonoBehaviour {
 
 
     /**
-    * <summary>Move a GameObject to a certain location</summary>
+    * <summary>move a GameObject to a certain location</summary>
     * 
     * @method LeanTween.move
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1272,7 +1272,7 @@ public class LeanTween : MonoBehaviour {
 
 
     /**
-    * <summary>Move a GameObject along a set of bezier curves</summary>
+    * <summary>move a GameObject along a set of bezier curves</summary>
     * 
     * @method LeanTween.move
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1310,7 +1310,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject through a set of points</summary>
+    * <summary>move a GameObject through a set of points</summary>
     * 
     * @method LeanTween.moveSpline
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1331,7 +1331,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject through a set of points</summary>
+    * <summary>move a GameObject through a set of points</summary>
     * 
     * @method LeanTween.moveSpline
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1352,7 +1352,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject through a set of points, in local space</summary>
+    * <summary>move a GameObject through a set of points, in local space</summary>
     * 
     * @method LeanTween.moveSplineLocal
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1373,7 +1373,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GUI Element to a certain location</summary>
+    * <summary>move a GUI Element to a certain location</summary>
     * 
     * @method LeanTween.move (GUI)
     * @param {LTRect} ltRect:LTRect ltRect LTRect object that you wish to move
@@ -1390,7 +1390,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject along the x-axis</summary>
+    * <summary>move a GameObject along the x-axis</summary>
     * 
     * @method LeanTween.moveX
     * @param {GameObject} gameObject:GameObject gameObject Gameobject that you wish to move
@@ -1403,7 +1403,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject along the y-axis</summary>
+    * <summary>move a GameObject along the y-axis</summary>
     * 
     * @method LeanTween.moveY
     * @param {GameObject} GameObject gameObject Gameobject that you wish to move
@@ -1416,7 +1416,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject along the z-axis</summary>
+    * <summary>move a GameObject along the z-axis</summary>
     * 
     * @method LeanTween.moveZ
     * @param {GameObject} GameObject gameObject Gameobject that you wish to move
@@ -1429,7 +1429,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject to a certain location relative to the parent transform.</summary>
+    * <summary>move a GameObject to a certain location relative to the parent transform.</summary>
     * 
     * @method LeanTween.moveLocal
     * @param {GameObject} GameObject gameObject Gameobject that you wish to rotate
@@ -1442,7 +1442,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject along a set of bezier curves, in local space</summary>
+    * <summary>move a GameObject along a set of bezier curves, in local space</summary>
     * 
     * @method LeanTween.moveLocal
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1491,7 +1491,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a GameObject to another transform</summary>
+    * <summary>move a GameObject to another transform</summary>
     * 
     * @method LeanTween.move
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to move
@@ -1955,7 +1955,7 @@ public class LeanTween : MonoBehaviour {
     #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
 
     /**
-    * <summary>Move a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
+    * <summary>move a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
     * 
     * @method LeanTween.move (RectTransform)
     * @param {RectTransform} rectTrans:RectTransform RectTransform that you wish to attach the tween to
@@ -1969,7 +1969,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a RectTransform object affecting x-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
+    * <summary>move a RectTransform object affecting x-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
     * 
     * @method LeanTween.moveX (RectTransform)
     * @param {RectTransform} rectTrans:RectTransform RectTransform that you wish to attach the tween to
@@ -1983,7 +1983,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a RectTransform object affecting y-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
+    * <summary>move a RectTransform object affecting y-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)</summary>
     * 
     * @method LeanTween.moveY (RectTransform)
     * @param {RectTransform} rectTrans:RectTransform RectTransform that you wish to attach the tween to
@@ -1997,7 +1997,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Move a RectTransform object affecting z-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)n</summary>
+    * <summary>move a RectTransform object affecting z-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)n</summary>
     * 
     * @method LeanTween.moveZ (RectTransform)
     * @param {RectTransform} rectTrans:RectTransform RectTransform that you wish to attach the tween to
@@ -3153,7 +3153,7 @@ public class LTBezierPath {
 }
 
 /**
-* Animate along a set of points that need to be in the format: controlPoint, point1, point2.... pointLast, endControlPoint <summary>Move a GameObject to a certain location</summary>
+* Animate along a set of points that need to be in the format: controlPoint, point1, point2.... pointLast, endControlPoint <summary>move a GameObject to a certain location</summary>
 * @class LTSpline
 * @constructor
 * @param {Vector3 Array} pts A set of points that define the points the path will pass through (starting with starting control point, and ending with a control point)<br />
@@ -3306,7 +3306,7 @@ public class LTSpline {
     }
 
     /**
-    * Retrieve a point along a path <summary>Move a GameObject to a certain location</summary>
+    * Retrieve a point along a path <summary>move a GameObject to a certain location</summary>
     * 
     * @method ratioAtPoint
     * @param {Vector3} point:Vector3 given a current location it makes the best approximiation of where it is along the path ratio-wise (0-1)
@@ -3330,7 +3330,7 @@ public class LTSpline {
     }
 
     /**
-    * Retrieve a point along a path <summary>Move a GameObject to a certain location</summary>
+    * Retrieve a point along a path <summary>move a GameObject to a certain location</summary>
     * 
     * @method point
     * @param {float} ratio:float ratio of the point along the path you wish to receive (0-1)
@@ -3371,7 +3371,7 @@ public class LTSpline {
 
 
     /**
-    * Place an object along a certain point on the path (facing the direction perpendicular to the path) <summary>Move a GameObject to a certain location</summary>
+    * Place an object along a certain point on the path (facing the direction perpendicular to the path) <summary>move a GameObject to a certain location</summary>
     * 
     * @method place
     * @param {Transform} transform:Transform the transform of the object you wish to place along the path
@@ -3384,7 +3384,7 @@ public class LTSpline {
     }
 
     /**
-    * Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path <summary>Move a GameObject to a certain location</summary>
+    * Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path <summary>move a GameObject to a certain location</summary>
     * 
     * @method place
     * @param {Transform} transform:Transform the transform of the object you wish to place along the path
@@ -3403,7 +3403,7 @@ public class LTSpline {
     }
 
     /**
-    * Place an object along a certain point on the path (facing the direction perpendicular to the path) - Local Space, not world-space <summary>Move a GameObject to a certain location</summary>
+    * Place an object along a certain point on the path (facing the direction perpendicular to the path) - Local Space, not world-space <summary>move a GameObject to a certain location</summary>
     * 
     * @method placeLocal
     * @param {Transform} transform:Transform the transform of the object you wish to place along the path
@@ -3416,7 +3416,7 @@ public class LTSpline {
     }
 
     /**
-    * Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path - Local Space, not world-space <summary>Move a GameObject to a certain location</summary>
+    * Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path - Local Space, not world-space <summary>move a GameObject to a certain location</summary>
     * 
     * @method placeLocal
     * @param {Transform} transform:Transform the transform of the object you wish to place along the path

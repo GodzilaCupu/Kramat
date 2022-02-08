@@ -31,7 +31,7 @@ public class GeneralAdvancedTechniques : MonoBehaviour {
 		// setOnCompleteOnRepeat
 
 
-		// Move to path of transforms that are moving themselves
+		// move to path of transforms that are moving themselves
 		LeanTween.value( avatarMove, 0f, (float)movePts.Length-1, 5f).setOnUpdate((float val)=>{
 			int first = (int)Mathf.Floor(val);
 			int next = first < movePts.Length-1 ? first + 1 : first;
