@@ -18,7 +18,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SettingsValue()
     {
-        _graphics.ResolutionValue();
+        _graphics.SetGraphicValue();
         _audio.SetAudioValue();
         btnCloseSettings.onClick.AddListener(CloseSettingsPanel);
     }
