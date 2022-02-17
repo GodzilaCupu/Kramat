@@ -27,7 +27,7 @@ public class CustomInputManager : MonoBehaviour
         playerControl.Pemain.Walking.performed += ctx => GetPlayerMovement();
         playerControl.Pemain.LookMouse.performed += ctx => GetMouseDelta();
         playerControl.Pemain.Sprint.performed += ctx => GetPlayerSprint();
-
+        playerControl.Pemain.PickObject.performed += ctx => GetPickedObject();
 
         playerControl.GUI.Pause.performed += ctx => GetESCPressed();
 
@@ -42,7 +42,10 @@ public class CustomInputManager : MonoBehaviour
     public Vector2 GetMouseDelta() => playerControl.Pemain.LookMouse.ReadValue<Vector2>();
 
     public float GetPlayerSprint() => playerControl.Pemain.Sprint.ReadValue<float>();
+    
+    public float GetPickedObject() => playerControl.Pemain.PickObject.ReadValue<float>();
 
     public float GetESCPressed() => playerControl.GUI.Pause.ReadValue<float>();
+
 
 }
