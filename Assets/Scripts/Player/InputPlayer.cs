@@ -51,14 +51,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ConversationNPC"",
-                    ""type"": ""Button"",
-                    ""id"": ""2f754751-fd89-40bb-8951-88a381532d00"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Senter"",
                     ""type"": ""Button"",
                     ""id"": ""699879e9-e62c-4877-858d-5a7fa17a2853"",
@@ -202,17 +194,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9c902c03-e4ab-43d8-8f3b-e4d037a29d9c"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ConversationNPC"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""fe652fba-7363-4ca1-a780-e7d89800da6b"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -289,6 +270,52 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""GUI"",
+            ""id"": ""a92b4482-74ff-4674-900d-7148adbecf48"",
+            ""actions"": [
+                {
+                    ""name"": ""Conversation"",
+                    ""type"": ""Button"",
+                    ""id"": ""e88c80e3-2ed7-46cb-b948-39c0347d5eb6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""57eec666-dc9f-4719-80aa-b2b921f7889a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4bc4bcfa-7a59-406c-bc4c-51436b1d0ea4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Conversation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9575d265-cf5e-4ced-a62b-d5cc1494949e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -316,8 +343,11 @@ public class @InputPlayer : IInputActionCollection, IDisposable
         m_Pemain_Walking = m_Pemain.FindAction("Walking", throwIfNotFound: true);
         m_Pemain_Sprint = m_Pemain.FindAction("Sprint", throwIfNotFound: true);
         m_Pemain_PickObject = m_Pemain.FindAction("PickObject", throwIfNotFound: true);
-        m_Pemain_ConversationNPC = m_Pemain.FindAction("ConversationNPC", throwIfNotFound: true);
         m_Pemain_Senter = m_Pemain.FindAction("Senter", throwIfNotFound: true);
+        // GUI
+        m_GUI = asset.FindActionMap("GUI", throwIfNotFound: true);
+        m_GUI_Conversation = m_GUI.FindAction("Conversation", throwIfNotFound: true);
+        m_GUI_Pause = m_GUI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,7 +401,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
     private readonly InputAction m_Pemain_Walking;
     private readonly InputAction m_Pemain_Sprint;
     private readonly InputAction m_Pemain_PickObject;
-    private readonly InputAction m_Pemain_ConversationNPC;
     private readonly InputAction m_Pemain_Senter;
     public struct PemainActions
     {
@@ -381,7 +410,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
         public InputAction @Walking => m_Wrapper.m_Pemain_Walking;
         public InputAction @Sprint => m_Wrapper.m_Pemain_Sprint;
         public InputAction @PickObject => m_Wrapper.m_Pemain_PickObject;
-        public InputAction @ConversationNPC => m_Wrapper.m_Pemain_ConversationNPC;
         public InputAction @Senter => m_Wrapper.m_Pemain_Senter;
         public InputActionMap Get() { return m_Wrapper.m_Pemain; }
         public void Enable() { Get().Enable(); }
@@ -404,9 +432,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                 @PickObject.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnPickObject;
                 @PickObject.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnPickObject;
                 @PickObject.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnPickObject;
-                @ConversationNPC.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnConversationNPC;
-                @ConversationNPC.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnConversationNPC;
-                @ConversationNPC.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnConversationNPC;
                 @Senter.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnSenter;
                 @Senter.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnSenter;
                 @Senter.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnSenter;
@@ -426,9 +451,6 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                 @PickObject.started += instance.OnPickObject;
                 @PickObject.performed += instance.OnPickObject;
                 @PickObject.canceled += instance.OnPickObject;
-                @ConversationNPC.started += instance.OnConversationNPC;
-                @ConversationNPC.performed += instance.OnConversationNPC;
-                @ConversationNPC.canceled += instance.OnConversationNPC;
                 @Senter.started += instance.OnSenter;
                 @Senter.performed += instance.OnSenter;
                 @Senter.canceled += instance.OnSenter;
@@ -436,6 +458,47 @@ public class @InputPlayer : IInputActionCollection, IDisposable
         }
     }
     public PemainActions @Pemain => new PemainActions(this);
+
+    // GUI
+    private readonly InputActionMap m_GUI;
+    private IGUIActions m_GUIActionsCallbackInterface;
+    private readonly InputAction m_GUI_Conversation;
+    private readonly InputAction m_GUI_Pause;
+    public struct GUIActions
+    {
+        private @InputPlayer m_Wrapper;
+        public GUIActions(@InputPlayer wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Conversation => m_Wrapper.m_GUI_Conversation;
+        public InputAction @Pause => m_Wrapper.m_GUI_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_GUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GUIActions set) { return set.Get(); }
+        public void SetCallbacks(IGUIActions instance)
+        {
+            if (m_Wrapper.m_GUIActionsCallbackInterface != null)
+            {
+                @Conversation.started -= m_Wrapper.m_GUIActionsCallbackInterface.OnConversation;
+                @Conversation.performed -= m_Wrapper.m_GUIActionsCallbackInterface.OnConversation;
+                @Conversation.canceled -= m_Wrapper.m_GUIActionsCallbackInterface.OnConversation;
+                @Pause.started -= m_Wrapper.m_GUIActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GUIActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GUIActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GUIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Conversation.started += instance.OnConversation;
+                @Conversation.performed += instance.OnConversation;
+                @Conversation.canceled += instance.OnConversation;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GUIActions @GUI => new GUIActions(this);
     private int m_DesktopSchemeIndex = -1;
     public InputControlScheme DesktopScheme
     {
@@ -451,7 +514,11 @@ public class @InputPlayer : IInputActionCollection, IDisposable
         void OnWalking(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPickObject(InputAction.CallbackContext context);
-        void OnConversationNPC(InputAction.CallbackContext context);
         void OnSenter(InputAction.CallbackContext context);
+    }
+    public interface IGUIActions
+    {
+        void OnConversation(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

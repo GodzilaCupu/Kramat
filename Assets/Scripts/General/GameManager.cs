@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CustomInputManager))]
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private CustomInputManager inputManager;
+
+    private void Start()
     {
-        
+        inputManager = GetComponent<CustomInputManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GetPause()
     {
-        
+        if(inputManager.GetESCPressed() != 1)
+        {
+
+        }
     }
 }

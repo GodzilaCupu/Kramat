@@ -38,14 +38,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ConversationNPC",
-                    "type": "Button",
-                    "id": "2f754751-fd89-40bb-8951-88a381532d00",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Senter",
                     "type": "Button",
                     "id": "699879e9-e62c-4877-858d-5a7fa17a2853",
@@ -189,17 +181,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9c902c03-e4ab-43d8-8f3b-e4d037a29d9c",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ConversationNPC",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "fe652fba-7363-4ca1-a780-e7d89800da6b",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -274,6 +255,52 @@
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "GUI",
+            "id": "a92b4482-74ff-4674-900d-7148adbecf48",
+            "actions": [
+                {
+                    "name": "Conversation",
+                    "type": "Button",
+                    "id": "e88c80e3-2ed7-46cb-b948-39c0347d5eb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "57eec666-dc9f-4719-80aa-b2b921f7889a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4bc4bcfa-7a59-406c-bc4c-51436b1d0ea4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Conversation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9575d265-cf5e-4ced-a62b-d5cc1494949e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
