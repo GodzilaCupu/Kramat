@@ -43,8 +43,9 @@ public class GameManager : MonoBehaviour
         if(inputManager.GetPickedObject() != 0)
         {
             _raycast.CrosshairRaycast();
-            // Debug.Log(_raycast.Ray.transform.name);
-        }
+        }else
+            _raycast.CrosshairRaycast();
+
     }
 
     private void GetPanelValue()
