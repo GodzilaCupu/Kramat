@@ -19,7 +19,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
             ""id"": ""df50bb98-6851-4290-9ea8-5a48295ba423"",
             ""actions"": [
                 {
-                    ""name"": ""LookMose"",
+                    ""name"": ""LookMouse"",
                     ""type"": ""Value"",
                     ""id"": ""466211f3-0933-48f8-88e6-99f75f21fed0"",
                     ""expectedControlType"": """",
@@ -185,7 +185,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LookMose"",
+                    ""action"": ""LookMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -223,7 +223,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Button With One Modifier"",
+                    ""name"": ""WASD Shift"",
                     ""id"": ""0e4ec87f-bdee-4aed-a099-ce2a405d58e5"",
                     ""path"": ""ButtonWithOneModifier"",
                     ""interactions"": """",
@@ -248,6 +248,39 @@ public class @InputPlayer : IInputActionCollection, IDisposable
                     ""name"": ""button"",
                     ""id"": ""4b4a07ec-ba01-4bd9-b4ce-acbf1ec7a2a7"",
                     ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""ArrowShift"",
+                    ""id"": ""95ef225d-1de7-4e16-bf3d-2552fc9bccfd"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""cd077e9b-d761-4f19-a8a7-84166877e417"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Desktop"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""f05024f2-b520-4f4a-9033-a03c85182b59"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Desktop"",
@@ -279,7 +312,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
 }");
         // Pemain
         m_Pemain = asset.FindActionMap("Pemain", throwIfNotFound: true);
-        m_Pemain_LookMose = m_Pemain.FindAction("LookMose", throwIfNotFound: true);
+        m_Pemain_LookMouse = m_Pemain.FindAction("LookMouse", throwIfNotFound: true);
         m_Pemain_Walking = m_Pemain.FindAction("Walking", throwIfNotFound: true);
         m_Pemain_Sprint = m_Pemain.FindAction("Sprint", throwIfNotFound: true);
         m_Pemain_PickObject = m_Pemain.FindAction("PickObject", throwIfNotFound: true);
@@ -334,7 +367,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
     // Pemain
     private readonly InputActionMap m_Pemain;
     private IPemainActions m_PemainActionsCallbackInterface;
-    private readonly InputAction m_Pemain_LookMose;
+    private readonly InputAction m_Pemain_LookMouse;
     private readonly InputAction m_Pemain_Walking;
     private readonly InputAction m_Pemain_Sprint;
     private readonly InputAction m_Pemain_PickObject;
@@ -344,7 +377,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
     {
         private @InputPlayer m_Wrapper;
         public PemainActions(@InputPlayer wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LookMose => m_Wrapper.m_Pemain_LookMose;
+        public InputAction @LookMouse => m_Wrapper.m_Pemain_LookMouse;
         public InputAction @Walking => m_Wrapper.m_Pemain_Walking;
         public InputAction @Sprint => m_Wrapper.m_Pemain_Sprint;
         public InputAction @PickObject => m_Wrapper.m_Pemain_PickObject;
@@ -359,9 +392,9 @@ public class @InputPlayer : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PemainActionsCallbackInterface != null)
             {
-                @LookMose.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMose;
-                @LookMose.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMose;
-                @LookMose.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMose;
+                @LookMouse.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMouse;
+                @LookMouse.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMouse;
+                @LookMouse.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnLookMouse;
                 @Walking.started -= m_Wrapper.m_PemainActionsCallbackInterface.OnWalking;
                 @Walking.performed -= m_Wrapper.m_PemainActionsCallbackInterface.OnWalking;
                 @Walking.canceled -= m_Wrapper.m_PemainActionsCallbackInterface.OnWalking;
@@ -381,9 +414,9 @@ public class @InputPlayer : IInputActionCollection, IDisposable
             m_Wrapper.m_PemainActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LookMose.started += instance.OnLookMose;
-                @LookMose.performed += instance.OnLookMose;
-                @LookMose.canceled += instance.OnLookMose;
+                @LookMouse.started += instance.OnLookMouse;
+                @LookMouse.performed += instance.OnLookMouse;
+                @LookMouse.canceled += instance.OnLookMouse;
                 @Walking.started += instance.OnWalking;
                 @Walking.performed += instance.OnWalking;
                 @Walking.canceled += instance.OnWalking;
@@ -414,7 +447,7 @@ public class @InputPlayer : IInputActionCollection, IDisposable
     }
     public interface IPemainActions
     {
-        void OnLookMose(InputAction.CallbackContext context);
+        void OnLookMouse(InputAction.CallbackContext context);
         void OnWalking(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPickObject(InputAction.CallbackContext context);

@@ -6,7 +6,7 @@
             "id": "df50bb98-6851-4290-9ea8-5a48295ba423",
             "actions": [
                 {
-                    "name": "LookMose",
+                    "name": "LookMouse",
                     "type": "Value",
                     "id": "466211f3-0933-48f8-88e6-99f75f21fed0",
                     "expectedControlType": "",
@@ -172,7 +172,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookMose",
+                    "action": "LookMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -210,7 +210,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Button With One Modifier",
+                    "name": "WASD Shift",
                     "id": "0e4ec87f-bdee-4aed-a099-ce2a405d58e5",
                     "path": "ButtonWithOneModifier",
                     "interactions": "",
@@ -235,6 +235,39 @@
                     "name": "button",
                     "id": "4b4a07ec-ba01-4bd9-b4ce-acbf1ec7a2a7",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "ArrowShift",
+                    "id": "95ef225d-1de7-4e16-bf3d-2552fc9bccfd",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "cd077e9b-d761-4f19-a8a7-84166877e417",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "button",
+                    "id": "f05024f2-b520-4f4a-9033-a03c85182b59",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Desktop",
