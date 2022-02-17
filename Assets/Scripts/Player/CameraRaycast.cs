@@ -8,12 +8,10 @@ public class CameraRaycast : MonoBehaviour
     [SerializeField] private float _rangeToRaycast;
     private RaycastHit ray;
 
-
-
     private Camera _thisCamera;
 
-
-    public RaycastHit Ray { get => ray; set => ray = value; }
+    [Header("Object Holder")]
+    [SerializeField] private Transform _objHolder;
 
     public void CrosshairRaycast()
     {

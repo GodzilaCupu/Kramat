@@ -31,8 +31,8 @@ public class MovementPlayer : MonoBehaviour
     {
         Vector2 playerInputMovement = inputManager.GetPlayerMovement();
         Vector3 playerMove = new Vector3(playerInputMovement.x, 0f, playerInputMovement.y);
-        Vector3 move = playerMove.x * transform.right + playerMove.z * transform.forward;
 
+        Vector3 move = playerMove.x * transform.right + playerMove.z * transform.forward;
         move = _cameraPos.forward * move.z + _cameraPos.right * move.x;
 
         // check Sprinting
