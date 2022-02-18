@@ -13,16 +13,19 @@ public class GameManager : MonoBehaviour
     [Header("Panel")]
     [SerializeField] private List<GameObject> panelGame;
 
-    [Header("Variable")]
-    private RaycastHit ray;
 
-
+    //[Header("Variable")]
+    //private bool _inRange, _onTrack;
+    
     private void Start()
     {
         inputManager = GetComponent<CustomInputManager>();
         settingsManager = panelGame[0].GetComponent<SettingsManager>();
         settingsManager.SettingsValue();
-        
+
+        GameObject raycastGO = GameObject.FindGameObjectWithTag("MainCamera");
+        _raycast = raycastGO.GetComponent<CameraRaycast>();
+
     }
 
     private void Update() 
@@ -40,11 +43,23 @@ public class GameManager : MonoBehaviour
 
     private void GetObject()
     {
-        if(inputManager.GetPickedObject() != 0)
+        if (_raycast.onTrack())
         {
-            _raycast.CrosshairRaycast();
-        }else
-            _raycast.CrosshairRaycast();
+            _raycast.ChangeCrosshairColor(Color.blue);
+            if (_raycast.inRange())
+            {
+                _raycast.ChangeCrosshairSize(1.5f);
+                if(inputManager.GetPickedObject() != 0)
+                {
+                    _raycast.CrosshairRaycast();
+                    _raycast.ChangeCrosshairColor(Color.green);
+                }
+            }
+            else
+                _raycast.ChangeCrosshairSize(1f);
+        }
+        else
+            _raycast.ChangeCrosshairColor(Color.black);
 
     }
 
