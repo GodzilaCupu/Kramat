@@ -3,7 +3,12 @@ guid: f6e2113abbf7c494683377c262d6a851
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pocong
+    second: {fileID: 2100000, guid: 11d7fc0d3166f1a47a4c48744efe61de, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

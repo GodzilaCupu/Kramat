@@ -3,7 +3,17 @@ guid: cce38ee9a824f4d438a131e3227f3d9a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: keris
+    second: {fileID: 2100000, guid: abfc4adcf4465604d9a77f49cdb7686b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sarung
+    second: {fileID: 2100000, guid: 3431b9be5d5845449be021139311b90f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

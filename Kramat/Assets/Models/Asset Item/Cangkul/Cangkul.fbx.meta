@@ -3,7 +3,12 @@ guid: 072d07e0563740049a9d76a92702e325
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cangkul
+    second: {fileID: 2100000, guid: 0afa80db6f79c934a8dde4ddc16d0341, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

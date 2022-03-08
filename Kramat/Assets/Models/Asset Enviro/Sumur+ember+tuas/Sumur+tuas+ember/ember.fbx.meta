@@ -3,7 +3,12 @@ guid: d6b810f8c78ad644b8bdeee98dca0f4a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sumur+ember+tuas
+    second: {fileID: 2100000, guid: 99931c5a3b99f9f4b8d53fd824060e99, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

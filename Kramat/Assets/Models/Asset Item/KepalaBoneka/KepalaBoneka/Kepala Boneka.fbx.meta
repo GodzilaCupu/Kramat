@@ -3,7 +3,12 @@ guid: ea979e782ee240344b301badb92fdeef
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_KepalaBoneka
+    second: {fileID: 2100000, guid: e7fdaa3c8b511c64ea7b91ecb3a4fc95, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,22 @@ guid: 84c6fa06e13293c47a05d171f1b30209
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Petromak
+    second: {fileID: 2100000, guid: 5aae3dd651de2484bae7c8d48b9dbd54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Petromak_Bohlam
+    second: {fileID: 2100000, guid: a408505943d53774cab889ff7f8ecfd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Petromak_Glass
+    second: {fileID: 2100000, guid: 75a3387dcbb91a84a915f7deb9ddf713, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

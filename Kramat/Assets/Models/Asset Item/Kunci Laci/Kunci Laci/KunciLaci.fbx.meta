@@ -3,7 +3,12 @@ guid: 3c274bf212f98c649b1ebc836932dcae
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kunci Laci
+    second: {fileID: 2100000, guid: 24021d290ed1a644686c2ee506769572, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
