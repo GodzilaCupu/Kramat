@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Jathie-Regular SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -711512035
   material: {fileID: 7776197946974461141}
-  materialHashCode: 0
+  materialHashCode: -584524899
   m_Version: 1.1.0
   m_SourceFontFileGUID: 19b7b17177f2fff4f974f19f79436b5f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 19b7b17177f2fff4f974f19f79436b5f, type: 3}
@@ -1972,7 +1972,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Jathie-Regular SDF Material
-  m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 128e987d567d4e2c824d754223b3f3b0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2030,11 +2030,12 @@ Material:
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0
+    - _Padding: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0
+    - _ScaleRatioB: 0
+    - _ScaleRatioC: 0
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
