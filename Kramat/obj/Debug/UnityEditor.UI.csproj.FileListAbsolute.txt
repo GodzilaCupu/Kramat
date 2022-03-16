@@ -1,0 +1,2 @@
+D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\UnityEditor.UI.csproj.AssemblyReference.cache
+D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\UnityEditor.UI.csproj.CoreCompileInputs.cache
