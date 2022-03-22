@@ -2716,10 +2716,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   play: 0
-  _transisionDelay: 0
+  _transisionDelay: 4
   _startDelay: 0
+  _popupOpen: 1
+  _popupClose: 1
+  _id: 0
   _soContainner:
+  - {fileID: 11400000, guid: e98df40ad6ee7944197c8f05e486e87a, type: 2}
+  - {fileID: 11400000, guid: ece1e92d4ef3bbe47a76833cf5b91f45, type: 2}
+  - {fileID: 11400000, guid: 5417d79a624645442bac27e80f4dd6b4, type: 2}
   - {fileID: 11400000, guid: 21dbbbe0c4c574448a7475531f26041f, type: 2}
+  - {fileID: 11400000, guid: f8c7396a6323664428f04cde002770e2, type: 2}
+  - {fileID: 11400000, guid: 14625bd2f8e66df408091cac6a8c1662, type: 2}
 --- !u!1 &1027526699
 GameObject:
   m_ObjectHideFlags: 0

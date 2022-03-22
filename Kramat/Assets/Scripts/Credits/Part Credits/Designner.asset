@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: Designner
   m_EditorClassIdentifier: 
   id: 1
-  _jobdeskSize: 55
+  _jobdeskSize: 50
   _titleSize: 40
   _nameSize: 35
-  _colorJobdesk: {r: 0.22352941, g: 0.8509804, b: 0.8862745, a: 1}
+  _colorJobdesk: {r: 0.22352943, g: 0.85098046, b: 0.8862746, a: 1}
   _colorTitle: {r: 0.2627451, g: 0.019607844, b: 0.019607844, a: 1}
-  _colorName: {r: 0.61960787, g: 0.8784314, b: 0.13725491, a: 1}
-  _stringJobdesk: Desingner
+  _colorName: {r: 0.61960787, g: 0.87843144, b: 0.13725491, a: 1}
+  _stringJobdesk: Game & Story Desingner
   _stringTitle:
-  - 
-  _stringName: []
+  - Lead Game Desingnner
+  - Mechanic Game Designner
+  - Story Game Designner 1
+  - Story Game Designner 2
+  _stringName:
+  - Muhammad Rafi Alamsyah
+  - Muhammad Rafi Alamsyah
+  - Fahmi Bagus Wibowo
+  - Dwiki Yoga Prasetyo
   _contentText: []

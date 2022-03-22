@@ -285,3 +285,4 @@ D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\Unity.ShaderGraph
 D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\Unity.ShaderGraph.Utilities.csproj.CopyComplete
 D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\Unity.ShaderGraph.Utilities.dll
 D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\Unity.ShaderGraph.Utilities.pdb
+D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\Unity.ShaderGraph.Utilities.csproj.AssemblyReference.cache

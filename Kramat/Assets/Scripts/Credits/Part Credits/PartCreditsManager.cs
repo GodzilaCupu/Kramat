@@ -12,7 +12,7 @@ public class PartCreditsManager : MonoBehaviour
     [SerializeField] private int _popupOpen;
     [SerializeField] private int _popupClose;
 
-    private int _id;
+    [SerializeField] private int _id;
     private string _displayTextContainner;
 
     // Scriptible Object Asset Referance
@@ -25,9 +25,13 @@ public class PartCreditsManager : MonoBehaviour
     private void Start()
     {
         _id = 0;
-        _displayTextObject = gameObject.transform.GetChild(0).gameObject;
-        _displayText = _displayTextObject.GetComponent<TextMeshProUGUI>();
-        DisplayTextFormScriptibleObject(_soContainner[0]);
+        _displayTextObject = this.gameObject;
+        _displayText = gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        PlayCredits();
     }
 
     private void DisplayTextFormScriptibleObject(CreditsScriptibleObject so)
@@ -39,30 +43,36 @@ public class PartCreditsManager : MonoBehaviour
         }
     }
 
-    IEnumerator TransisionDelay() 
-    {
-        _id++;
-        GetClose(_popupClose, _displayTextObject);
-        yield return _transisionDelay; 
-    }
 
-
-    private void CreditsManager(CreditsScriptibleObject so)
+    private void PlayCredits()
     {
         if (!play)
             return;
-        StartTrasision(0);
+
+        NextDisplaying(_id);
     }
 
-    private void StartTrasision(int id)
+    private void NextDisplaying(int id)
     {
+        StartCoroutine(WaitPopUp(_popupOpen, _displayTextObject));
         DisplayTextFormScriptibleObject(_soContainner[id]);
-        GetPopup(_popupOpen, _displayTextObject);
-        StartCoroutine(TransisionDelay());
+        StartCoroutine(WaitPopClose(_popupClose, _displayTextObject));
     }
 
     #region Animation
     private void GetPopup(float intervalTime, GameObject target) => target.LeanScale(Vector2.one, intervalTime);
     private void GetClose(float intervalTime, GameObject target) => target.LeanScale(Vector2.zero, intervalTime).setEaseInBounce();
     #endregion
+
+    IEnumerator WaitPopUp(float interval, GameObject target)
+    {
+        GetPopup(interval, target);
+        yield return new WaitForSeconds(_transisionDelay);
+    }
+
+    IEnumerator WaitPopClose (float interval, GameObject target)
+    {
+        yield return new WaitForSeconds(_transisionDelay);
+        GetClose(interval, target);
+    }
 }
