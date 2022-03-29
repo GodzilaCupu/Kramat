@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 public class ControllerPlayer : MonoBehaviour
@@ -16,7 +15,9 @@ public class ControllerPlayer : MonoBehaviour
     [SerializeField] private float playerSpeedSprint;
     [SerializeField] private float speedChangeRate = 10f;
     private float _speed;
-    private float _currentSpeed;
+
+    private bool isRunning;
+    private bool isMoving;
 
     [Space(5)]
     [SerializeField] private float gravity = -15f;
@@ -41,10 +42,9 @@ public class ControllerPlayer : MonoBehaviour
     [SerializeField] private float animationSmoothTime;
 
     [Space(5)]
-    [Header("Parameter Animator to hash")]
-    [SerializeField] private int isRunning;
-    [SerializeField] private int moveXParameterAnimationID;
-    [SerializeField] private int moveZParameterAnimationID;
+    private int runAnimatorID;
+    private int moveXParameterAnimationID;
+    private int moveZParameterAnimationID;
 
     private Vector2 _animationTransisionBlend;
     private Vector2 _animationVelocity;
@@ -52,8 +52,18 @@ public class ControllerPlayer : MonoBehaviour
     [Space(10)]
     [Header("Camera Configuration")]
     [SerializeField] private GameObject cameraTarget;
-    [SerializeField] private CinemachineVirtualCamera vCam;
     //[SerializeField] private GameObject kepala;
+
+    [Space(5)]
+    [Header("HeadBob")]
+    [SerializeField] private bool useHeadBob;
+    [SerializeField] private float walkingHeadBobSpeed;
+    [SerializeField] private float walkingHeadBobAmmount;
+    [SerializeField] private float runningHeadBobSpeed;
+    [SerializeField] private float runningHeadBobAmmount;
+
+    private float _startCameraPos; 
+    private float _timerHeadbob;
 
     [Space(5)]
     [SerializeField] private float topClamp;
@@ -63,6 +73,7 @@ public class ControllerPlayer : MonoBehaviour
     private float _rotationVelocity;
     private float _cinemachineTargetPitch;
 
+   
     private const float _threshold = 0.01f;
 
     [Space(10)]
@@ -85,20 +96,41 @@ public class ControllerPlayer : MonoBehaviour
 
         moveXParameterAnimationID = Animator.StringToHash("MoveX");
         moveZParameterAnimationID = Animator.StringToHash("MoveZ");
-        isRunning = Animator.StringToHash("Running");
+        runAnimatorID = Animator.StringToHash("Running");
+        _startCameraPos = cameraTarget.transform.localPosition.y;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        HeadBobHandler();
+    }
+    // Update is called once per frame indepedent
+    private void FixedUpdate()
     {
         GroundCheck();
         Gravity();
         PlayerMovement();
+
     }
 
     private void LateUpdate()
     {
         CameraRotation();
+    }
+
+    private void HeadBobHandler()
+    {
+        if (useHeadBob)
+        {
+            if (isMoving)
+            {
+                _timerHeadbob = Time.deltaTime * (isRunning ? runningHeadBobSpeed : walkingHeadBobSpeed);
+                float newCameraPos = _startCameraPos + Mathf.Sin(_timerHeadbob) * (isRunning ? runningHeadBobAmmount : walkingHeadBobAmmount);
+                cameraTarget.transform.localPosition = new Vector3(cameraTarget.transform.localPosition.x, newCameraPos, cameraTarget.transform.localPosition.z);
+                Debug.Log("posCam = " + cameraTarget.transform.localPosition.y);
+            }
+        }
     }
 
     private void PlayerMovement()
@@ -109,9 +141,13 @@ public class ControllerPlayer : MonoBehaviour
 
         //Get speed, Sprint or walking
         float targetSpeed = _inputMap.GetPlayerSprintTrigger() == 1 ? playerSpeedSprint : playerSpeedWalk;
-        _currentSpeed = targetSpeed;
-        
-        if (_inputMap.GetPlayerMovementWalk() == Vector2.zero) targetSpeed = 0.0f;
+        isRunning = targetSpeed == playerSpeedSprint ? true : false;
+
+        if (_inputMap.GetPlayerMovementWalk() == Vector2.zero)
+        {
+            targetSpeed = 0.0f;
+            isMoving = false;
+        }
 
         float currentHorizontalspeed = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z).magnitude;
         float speedOffset = 0.1f;
@@ -120,13 +156,17 @@ public class ControllerPlayer : MonoBehaviour
         {
             _speed = Mathf.Lerp(currentHorizontalspeed, targetSpeed, Time.deltaTime * speedChangeRate);
             _speed = Mathf.Round(_speed * 1000f) / 1000f;
+            isMoving = true;
         }
         else
             _speed = targetSpeed;
 
         Vector3 playerMove = new Vector3(_animationTransisionBlend.x, 0f, _animationTransisionBlend.y).normalized;
         if (_inputMap.GetPlayerMovementWalk() != Vector2.zero)
+        {
             playerMove = transform.right * playerInputMovement.x + transform.forward * playerInputMovement.y;
+            isMoving = true;
+        }
 
         controller.Move(playerMove.normalized * (_speed * Time.deltaTime) + new Vector3(0f, _verticalVelocity, 0f) * Time.deltaTime);
 
@@ -135,6 +175,7 @@ public class ControllerPlayer : MonoBehaviour
 
         //SetAudio
         ProgressCycle(targetSpeed);
+
     }
 
     private void PlayAnimation()
@@ -142,13 +183,13 @@ public class ControllerPlayer : MonoBehaviour
         switch (_inputMap.GetPlayerSprintTrigger())
         {
             case 0:
-                anim.SetBool(isRunning, false);
+                anim.SetBool(runAnimatorID, false);
                 anim.SetFloat(moveXParameterAnimationID, _animationTransisionBlend.x);
                 anim.SetFloat(moveZParameterAnimationID, _animationTransisionBlend.y);
                 break;
 
             case 1:
-                anim.SetBool(isRunning, true);
+                anim.SetBool(runAnimatorID, true);
                 anim.SetFloat(moveXParameterAnimationID, _animationTransisionBlend.x);
                 anim.SetFloat(moveZParameterAnimationID, _animationTransisionBlend.y);
                 break;
@@ -209,11 +250,10 @@ public class ControllerPlayer : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-
     private void ProgressCycle(float speed)
     {
         if(controller.velocity.sqrMagnitude > 0 && _inputMap.GetPlayerMovementWalk() != Vector2.zero)
-            _stepCycle += (controller.velocity.magnitude + (speed * (isRunning == 0 ? 1f : m_RunstepLenghten))) * Time.deltaTime;
+            _stepCycle += (controller.velocity.magnitude + (speed * (runAnimatorID == 0 ? 1f : m_RunstepLenghten))) * Time.deltaTime;
 
         if (!(_stepCycle > _nextStep))
             return;
@@ -255,4 +295,11 @@ public class ControllerPlayer : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - groundOffset, transform.position.z), groundRadius);
 
     }
+
+    public enum e_HeadBob
+    {
+        Walking,
+        Running
+    }
+
 }

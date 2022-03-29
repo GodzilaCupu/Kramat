@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637836186092137779
-    m_Hash: 1829858472
+      ticks: 637840352237871904
+    m_Hash: 2108084720
   m_LockFileStatus:
     m_FilePath: D:/Data Ery/Kuliah/Tugas Akhir/Project/Kramat/Kramat/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637836186093002797
-    m_Hash: 68913963
+      ticks: 637840352237891896
+    m_Hash: 2088934574
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -428,6 +428,7 @@ m_PackageAssets:
         - 3.0.9
         - 3.0.10
         - 3.0.12
+        - 3.0.13
         compatible:
         - 1.0.2
         - 1.0.6
@@ -457,6 +458,7 @@ m_PackageAssets:
         - 3.0.9
         - 3.0.10
         - 3.0.12
+        - 3.0.13
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
