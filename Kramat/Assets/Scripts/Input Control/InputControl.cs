@@ -59,7 +59,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""NPC-Interect"",
+                    ""name"": ""NPC-Interect + Grab Object"",
                     ""type"": ""Button"",
                     ""id"": ""a9fd3c41-34a1-4055-af17-d52b47eceda4"",
                     ""expectedControlType"": ""Button"",
@@ -262,7 +262,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NPC-Interect"",
+                    ""action"": ""NPC-Interect + Grab Object"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -273,7 +273,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NPC-Interect"",
+                    ""action"": ""NPC-Interect + Grab Object"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -283,7 +283,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard + Mouse"",
                     ""action"": ""Senter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -339,7 +339,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Senter = m_Player.FindAction("Senter", throwIfNotFound: true);
-        m_Player_NPCInterect = m_Player.FindAction("NPC-Interect", throwIfNotFound: true);
+        m_Player_NPCInterectGrabObject = m_Player.FindAction("NPC-Interect + Grab Object", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -394,7 +394,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Senter;
-    private readonly InputAction m_Player_NPCInterect;
+    private readonly InputAction m_Player_NPCInterectGrabObject;
     public struct PlayerActions
     {
         private @InputControlMap m_Wrapper;
@@ -404,7 +404,7 @@ public class @InputControlMap : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Senter => m_Wrapper.m_Player_Senter;
-        public InputAction @NPCInterect => m_Wrapper.m_Player_NPCInterect;
+        public InputAction @NPCInterectGrabObject => m_Wrapper.m_Player_NPCInterectGrabObject;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -429,9 +429,9 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                 @Senter.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSenter;
                 @Senter.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSenter;
                 @Senter.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSenter;
-                @NPCInterect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterect;
-                @NPCInterect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterect;
-                @NPCInterect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterect;
+                @NPCInterectGrabObject.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterectGrabObject;
+                @NPCInterectGrabObject.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterectGrabObject;
+                @NPCInterectGrabObject.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNPCInterectGrabObject;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -451,9 +451,9 @@ public class @InputControlMap : IInputActionCollection, IDisposable
                 @Senter.started += instance.OnSenter;
                 @Senter.performed += instance.OnSenter;
                 @Senter.canceled += instance.OnSenter;
-                @NPCInterect.started += instance.OnNPCInterect;
-                @NPCInterect.performed += instance.OnNPCInterect;
-                @NPCInterect.canceled += instance.OnNPCInterect;
+                @NPCInterectGrabObject.started += instance.OnNPCInterectGrabObject;
+                @NPCInterectGrabObject.performed += instance.OnNPCInterectGrabObject;
+                @NPCInterectGrabObject.canceled += instance.OnNPCInterectGrabObject;
             }
         }
     }
@@ -483,6 +483,6 @@ public class @InputControlMap : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnSenter(InputAction.CallbackContext context);
-        void OnNPCInterect(InputAction.CallbackContext context);
+        void OnNPCInterectGrabObject(InputAction.CallbackContext context);
     }
 }

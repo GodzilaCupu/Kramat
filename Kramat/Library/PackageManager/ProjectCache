@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637840352237871904
-    m_Hash: 2108084720
+      ticks: 637841672315724470
+    m_Hash: 1829858472
   m_LockFileStatus:
     m_FilePath: D:/Data Ery/Kuliah/Tugas Akhir/Project/Kramat/Kramat/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637840352237891896
-    m_Hash: 2088934574
+      ticks: 637841672401840181
+    m_Hash: 68913963
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

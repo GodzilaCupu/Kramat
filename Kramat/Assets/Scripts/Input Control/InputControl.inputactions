@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "NPC-Interect",
+                    "name": "NPC-Interect + Grab Object",
                     "type": "Button",
                     "id": "a9fd3c41-34a1-4055-af17-d52b47eceda4",
                     "expectedControlType": "Button",
@@ -249,7 +249,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NPC-Interect",
+                    "action": "NPC-Interect + Grab Object",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +260,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NPC-Interect",
+                    "action": "NPC-Interect + Grab Object",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,7 +270,7 @@
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard + Mouse",
                     "action": "Senter",
                     "isComposite": false,
                     "isPartOfComposite": false
