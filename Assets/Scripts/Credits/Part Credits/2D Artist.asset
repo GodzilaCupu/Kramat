@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a9b1f3c2f34ec4aa3efece58165bdf, type: 3}
+  m_Name: 2D Artist
+  m_EditorClassIdentifier: 
+  id: 2
+  _jobdeskSize: 50
+  _titleSize: 40
+  _nameSize: 35
+  _colorJobdesk: {r: 0.22352943, g: 0.85098046, b: 0.8862746, a: 1}
+  _colorTitle: {r: 0.2627451, g: 0.019607844, b: 0.019607844, a: 1}
+  _colorName: {r: 0.61960787, g: 0.87843144, b: 0.13725491, a: 1}
+  _stringJobdesk: 2D Art Designer
+  _stringTitle:
+  - UI Designner
+  - UX Designner
+  - Logo Designner
+  - Font Designner
+  - Storyboard Artist
+  - '2D Concept Artist '
+  _stringName:
+  - Dwiki Yoga Prasetyo
+  - Dwiki Yoga Prasetyo
+  - Dwiki Yoga Prasetyo
+  - Dwiki Yoga Prasetyo
+  - Dwiki Yoga Prasetyo
+  - Dwiki Yoga Prasetyo
+  _contentText: []
