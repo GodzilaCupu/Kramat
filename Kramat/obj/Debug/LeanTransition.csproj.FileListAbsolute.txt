@@ -1,2 +1,0 @@
-D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\LeanTransition.csproj.AssemblyReference.cache
-D:\Data Ery\Kuliah\Tugas Akhir\Project\Kramat\Kramat\obj\Debug\LeanTransition.csproj.CoreCompileInputs.cache
