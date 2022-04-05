@@ -82,6 +82,8 @@ public class ControllerPlayer : MonoBehaviour
     [Tooltip("Jarak Naik Turun HeadBob pas lagi lari")]
     [SerializeField] private float runningHeadBobAmmount;
 
+    [SerializeField] private float headbobSmothingtime;
+
     [Space(15)]
     [Header("SFX Configuration")]
     [SerializeField] AudioSource audioSource;
@@ -102,6 +104,7 @@ public class ControllerPlayer : MonoBehaviour
     {
         //_sfxSwapper = GetComponent<FootstepSFXSwapper>();
         controller = GetComponent<CharacterController>();
+        _inputMap = GetComponent<CustomInputMap>();
         anim = GetComponent<Animator>();
 
         moveXParameterAnimationID = Animator.StringToHash("MoveX");
@@ -186,14 +189,14 @@ public class ControllerPlayer : MonoBehaviour
         else
             _speed = targetSpeed;
 
-        Vector3 playerMove = new Vector3(_animationTransisionBlend.x, 0f, _animationTransisionBlend.y).normalized;
+        Vector3 playerMove = new Vector3(_animationTransisionBlend.x, 0f, _animationTransisionBlend.y);
         if (_inputMap.GetPlayerMovementWalk() != Vector2.zero)
         {
-            playerMove = transform.right * playerInputMovement.x + transform.forward * playerInputMovement.y;
+            playerMove = transform.right * playerMove.x + transform.forward * playerMove.z;
             isMoving = true;
         }
+        controller.Move(playerMove * (_speed * Time.deltaTime) + new Vector3(0f, _verticalVelocity, 0f) * Time.deltaTime);
 
-        controller.Move(playerMove.normalized * (_speed * Time.deltaTime) + new Vector3(0f, _verticalVelocity, 0f) * Time.deltaTime);
 
         //SetAnimation
         PlayAnimation();
