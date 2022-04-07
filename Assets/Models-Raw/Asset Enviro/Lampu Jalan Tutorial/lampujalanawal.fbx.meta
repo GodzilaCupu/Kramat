@@ -1,27 +1,19 @@
 fileFormatVersion: 2
-guid: 721bed415d8aefa4780d7ed521db7dc0
+guid: 0a3ebb77bc8fe974f9897d1eeef592d4
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -7963061602383398844
-    second: A_Walk
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kacalampu
+    second: {fileID: 2100000, guid: 50899115efd33af47ab8419f6f0da013, type: 2}
   - first:
-      74: -7939485240083989309
-    second: A_Run
-  - first:
-      74: -6730566300151397415
-    second: A_Idle
-  - first:
-      74: 8219789581160768500
-    second: A_PickUp
-  - first:
-      74: 6837681762994479941
-    second: Special.001
-  - first:
-      74: 6542366546520837204
-    second: A_Base
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lampujalan
+    second: {fileID: 2100000, guid: d104d4a6140ffec4389a949e1e3f3404, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
