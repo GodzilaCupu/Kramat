@@ -336,16 +336,4 @@ public class ControllerPlayer : MonoBehaviour
 
     }
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
 }
