@@ -19,7 +19,7 @@ public class EventsManager : MonoBehaviour
     public event Action<int> onNextTutorial;    
     public void SetActiveTutorial(TutorialState state) => onSetActiveTutorial?.Invoke(state);
     public void SetDeactiveTutorial(TutorialState state) => onSetDeactiveTutorial?.Invoke(state);
-    public void SetNextTutorial(int state) => onNextTutorial?.Invoke(state);
+    public void SetNextTutorial(int id) => onNextTutorial?.Invoke(id);
 
     #endregion
 

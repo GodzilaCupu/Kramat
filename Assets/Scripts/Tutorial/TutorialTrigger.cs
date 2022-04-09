@@ -8,7 +8,7 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "Player")
+        if (collider.name == "Player")
             EventsManager.current.SetNextTutorial(Id);
     }
 }
