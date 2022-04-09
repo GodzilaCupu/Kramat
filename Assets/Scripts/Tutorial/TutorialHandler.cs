@@ -14,35 +14,33 @@ public enum TutorialState
 
 public class TutorialHandler : MonoBehaviour
 {
-    [SerializeField] private bool _spawn;
     [SerializeField] private float _targetTimer = 10;
 
-    bool _startCountTimer;
-    float _currentTimer;
-    int _currentTutorial = 1;
+    private float _currentTimer;
+    int _currentTutorial;
 
 
     private void Start()
     {
         _currentTimer = _targetTimer;
-        StartTutorial();
+        _currentTutorial = 1;
     }
+
+    private void Update()
+    {
+        if(_currentTutorial < 4)
+            CheckTutorialProgres(_currentTutorial);
+    }
+
 
     private void OnEnable()
     {
-        EventsManager.current.onNextTutorial += TutorialManager;
+        EventsManager.current.onNextTutorial += NextTutorial;
     }
 
     private void OnDisable()
     {
-        EventsManager.current.onNextTutorial -= TutorialManager;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        Timer();
+        EventsManager.current.onNextTutorial -= NextTutorial;
     }
 
     #region Spawanner
@@ -50,69 +48,77 @@ public class TutorialHandler : MonoBehaviour
     private void ActivationTutor(TutorialState State) => EventsManager.current.SetActiveTutorial(State);
     private void DeactivationTutor(TutorialState State) => EventsManager.current.SetDeactiveTutorial(State);
 
-    private void TutorTimer(TutorialState State) 
-    {
-        ActivationTutor(State);
-
-        if (_startCountTimer == false)
-            _startCountTimer = true;
-        else
-            DeactivationTutor(State);
-
-    }
-
-    private void Timer()
-    {
-        if (_startCountTimer)
-        {
-            if (_currentTimer > 0)
-            {
-                _currentTimer -= Time.deltaTime;
-                Debug.Log($"Ur time {_currentTimer}");
-            }
-            else
-            {
-                _currentTimer = _targetTimer;
-                _startCountTimer = false;
-                Debug.Log($"Ur time {_currentTimer}");
-            }
-            Debug.Log($"Ur count {_startCountTimer}");
-        }
-    }
     #endregion
 
-    #region Tutorial Management
-    private void StartTutorial()
-    {
-        TutorTimer(TutorialState.MouseLook);
-        TutorTimer(TutorialState.Movement);
-        _currentTutorial++;
-        Debug.Log($"Ur id {_currentTutorial}");
-    }
+    #region Tutorial Manager
 
+    private void NextTutorial(int id) => _currentTutorial = id;
 
-    private void TutorialManager(int id)
+    private void CheckTutorialProgres(int id)
     {
         switch (id)
         {
+            case 1:
+                DisplayStartTutorial(TutorialState.MouseLook, TutorialState.Movement);
+                Debug.Log($"Ur id {_currentTutorial}");
+                break;
+
             case 2:
-                TutorTimer(TutorialState.Flashlight);
-                _currentTutorial++;
+                DisplayNextTutorial(TutorialState.Flashlight);
                 Debug.Log($"Ur id {_currentTutorial}");
 
                 break;
 
             case 3:
-                TutorTimer(TutorialState.Flashlight);
+                DisplayNextTutorial(TutorialState.Flashlight);
+                _currentTutorial = 2;
                 Debug.Log($"Ur id {_currentTutorial}");
                 break;
 
             default:
                 Debug.Log($"Check Ur id {_currentTutorial}");
                 break;
-
         }
     }
 
+    #endregion
+
+    #region Timer
+
+    private void DisplayNextTutorial(TutorialState State)
+    {
+        ActivationTutor(State);
+        if (_currentTimer > 0)
+        {
+            _currentTimer -= Time.deltaTime;
+            Debug.Log($"Ur time {_currentTimer}");
+        }
+        else
+        {
+            DeactivationTutor(State);
+            _currentTimer = _targetTimer;
+            Debug.Log($"Ur time {_currentTimer}");
+            _currentTutorial = 0;
+        }
+    }
+
+    private void DisplayStartTutorial(TutorialState State1, TutorialState State2)
+    {
+        ActivationTutor(State1);
+        ActivationTutor(State2);
+        if (_currentTimer > 0)
+        {
+            _currentTimer -= Time.deltaTime;
+            Debug.Log($"Ur time {_currentTimer}");
+        }
+        else
+        {
+            DeactivationTutor(State1);
+            DeactivationTutor(State2);
+            _currentTimer = _targetTimer;
+            Debug.Log($"Ur time {_currentTimer}");
+            _currentTutorial = 0;
+        }
+    }
     #endregion
 }

@@ -10,12 +10,12 @@ public class TutorialItem : MonoBehaviour
     private void Start()
     {
         _item = this.gameObject;
+
         if (_item.active == true)
             _item.SetActive(false);
+
         EventsManager.current.onSetActiveTutorial += SetActive;
         EventsManager.current.onSetDeactiveTutorial += SetDeactive;
-        if (_item.active == true)
-            _item.SetActive(false);
     }
 
     private void OnDestroy()
@@ -26,7 +26,7 @@ public class TutorialItem : MonoBehaviour
 
     private void SetActive(TutorialState State)
     {
-        if (State == _state)
+        if (_state == State)
             _item.SetActive(true);
     }
 

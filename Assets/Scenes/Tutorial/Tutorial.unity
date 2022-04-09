@@ -857,7 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c9164a8020f8d409d7272bf0fda42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawn: 0
   _targetTimer: 10
 --- !u!114 &282958182
 MonoBehaviour:
