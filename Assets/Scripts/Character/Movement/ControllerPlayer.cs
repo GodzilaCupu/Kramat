@@ -247,7 +247,6 @@ public class ControllerPlayer : MonoBehaviour
                 _timerHeadbob = Time.deltaTime * (isRunning ? runningHeadBobSpeed : walkingHeadBobSpeed);
                 float newCameraPos = _startCameraPos + Mathf.Sin(_timerHeadbob) * (isRunning ? runningHeadBobAmmount : walkingHeadBobAmmount);
                 cameraTarget.transform.localPosition = new Vector3(cameraTarget.transform.localPosition.x, newCameraPos, cameraTarget.transform.localPosition.z);
-                Debug.Log("posCam = " + cameraTarget.transform.localPosition.y);
             }
         }
     }
@@ -336,16 +335,4 @@ public class ControllerPlayer : MonoBehaviour
 
     }
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
 }

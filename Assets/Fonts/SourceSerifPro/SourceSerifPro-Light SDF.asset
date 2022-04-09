@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: SourceSerifPro-Light SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1210880569
   material: {fileID: 8216400591923507172}
-  materialHashCode: 0
+  materialHashCode: 573981305
   m_Version: 1.1.0
   m_SourceFontFileGUID: c879e912f217d8c47b5a552c71ce215f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c879e912f217d8c47b5a552c71ce215f, type: 3}
@@ -2672,9 +2672,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0
+    - _ScaleRatioB: 0
+    - _ScaleRatioC: 0
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
