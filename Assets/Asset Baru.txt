@@ -1,0 +1,17 @@
+Asset Baru (12 04 22) :
+
+-2D:
+Map desa wetan
+map desa kulon
+material particle kunang-kunang, api
+GUI Full
+
+-3d:
+karakter ketua adat
+
+-cut scene:
+loading animation fix
+format qoute 
+
+-Audio :
+Sfx

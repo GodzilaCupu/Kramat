@@ -1,0 +1,37 @@
+fitur tutorial :
+
+-Main menu Benerin ->  (Done)
+-loading scene -> (Done)
+-Tutorial Scene 
+
+-player akan di tampilkan disclaimmer terlebih dahulu (fade)
+
+-player akan di tampilkan latar tempat, waktu dan tanggal ( transisi 4 detik ) 2 detik terahir sfx bus keluar
+
+-player akan ditampilkan tutorial pas awal (panel tutorial on)
+
+-panel tutorial akan mati jika sudah 10 detik
+
+-trigger papan petunjuk 1
+-percakapan 1 di mulai 
+
+-percakapan 1 selesai
+
+-play sfx
+
+-trigger papan petunjuk 2
+-percakapan 2 di mulai 
+
+-percakapan 2 selesai
+
+-trigger sfx gamelan
+-percakapan 3 di mulai 
+
+-percakapan 3 selesai
+
+-start credits ( movement lock => force to move foward)
+-play animation logo
+finish
+ 
+#DEAD76FF
+#66553DFF
