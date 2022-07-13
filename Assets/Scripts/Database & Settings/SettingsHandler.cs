@@ -56,7 +56,7 @@ public class SettingsHandler : MonoBehaviour
     private bool Fullscreen_Mode;
 
     [SerializeField, Tooltip("0 = Prev, 1 = next")] private Button[] btn_quality;
-    [SerializeField] private UniversalRenderPipelineAsset[] QualitySettings;
+    [SerializeField] private UniversalRenderPipelineAsset[] _qualityPreset;
     [SerializeField] private TextMeshProUGUI t_quality;
     private int _qualityID = 1;
 
@@ -75,6 +75,7 @@ public class SettingsHandler : MonoBehaviour
         SetGeneralButton();
         SetButtonQuality();
         SetToogleFullScreen();
+        if (f_sensitivity == null || f_sensitivity == 0) f_sensitivity = DefaultValue_Sensitivity;
         EventsManager.current.onOpenPanelSettings += OpenPanel;
     }
 
@@ -117,6 +118,7 @@ public class SettingsHandler : MonoBehaviour
 
                 case ((int)enum_SettingsComponent.Sensitivity):
                     f_sensitivity = componenets[((int)enum_SettingsComponent.Sensitivity)].Value;
+                    if (f_sensitivity == null || f_sensitivity == 0) f_sensitivity = DefaultValue_Sensitivity;
                     break;
 
                 case ((int)enum_SettingsComponent.VolumeMaster):
@@ -212,7 +214,6 @@ public class SettingsHandler : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainMenu") return;
         EventsManager.current.ChangeSensitivy(f_sensitivity);
     }
-
     #endregion
 
     #region Sound Configuration
@@ -236,13 +237,6 @@ public class SettingsHandler : MonoBehaviour
         Screen.fullScreen = v;
         Fullscreen_Mode = v;
         Database.SetGraphic("FullScreen", Fullscreen_Mode ? 1 : 0);
-
-        if (Fullscreen_Mode)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            return;
-        }
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void SetButtonQuality()
@@ -262,22 +256,27 @@ public class SettingsHandler : MonoBehaviour
                 t_quality.text = "Low";
                 btn_quality[0].interactable = false;
                 btn_quality[1].interactable = true;
-
-                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
+                QualitySettings.SetQualityLevel(_qualityID);
+                QualitySettings.renderPipeline = _qualityPreset[_qualityID];
+                GraphicsSettings.renderPipelineAsset = _qualityPreset[_qualityID];
                 break;
 
             case 1:
                 t_quality.text = "Medium";
                 btn_quality[1].interactable = true;
                 btn_quality[0].interactable = true;
-                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
+                QualitySettings.SetQualityLevel(_qualityID);
+                QualitySettings.renderPipeline = _qualityPreset[_qualityID];
+                GraphicsSettings.renderPipelineAsset = _qualityPreset[_qualityID];
                 break;
 
             case 2:
                 t_quality.text = "High";
                 btn_quality[0].interactable = true;
                 btn_quality[1].interactable = false; 
-                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
+                QualitySettings.SetQualityLevel(_qualityID);
+                QualitySettings.renderPipeline = _qualityPreset[_qualityID];
+                GraphicsSettings.renderPipelineAsset = _qualityPreset[_qualityID];
                 break;
         }
     
@@ -300,7 +299,6 @@ public class SettingsHandler : MonoBehaviour
         Database.SetGraphic("FullScreen", Fullscreen_Mode ? 1 : 0);
         Database.SetGraphic("Quality", _qualityID);
     }
-
     #endregion
 
 }

@@ -23,9 +23,10 @@ public class PausedHandler : MonoBehaviour
 
     private void Update()
     {
-        // jika pencet btn esc
         if(CustomInputMap.current.GetPaused())
             CheckPaused(true);
+
+        CheckCursor();
     }
 
     private void OnApplicationFocus(bool focus)
@@ -64,4 +65,20 @@ public class PausedHandler : MonoBehaviour
     }
 
     public void OpenSettings() => EventsManager.current.OpenPanelSettings();
+    private void CheckCursor()
+    {
+        if (isPaused)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            return;
+        }
+
+        if (Database.GetGraphic("FullScreen") == 1)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            return;
+        }
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 }
