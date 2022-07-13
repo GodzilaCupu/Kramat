@@ -25,25 +25,25 @@ public class VideoIntroHandler : MonoBehaviour
         videoplayer.loopPointReached += CheckIsDone;
     }
 
+    private void OnDisable()
+    {
+        EventsManager.current.onTutorialProgres -= CheckPlayIntro;
+        videoplayer.loopPointReached -= CheckIsDone;
+    }
+
     private void CheckIsDone(VideoPlayer source)
     {
         canPlay = false;
         videoplayer.Stop();
         SceneManager.LoadScene("Wetan");
         go_container.SetActive(canPlay);
-        manager.SaveProgres();
+        manager.SaveProgres(SceneManager.GetActiveScene().name, (int)enum_TutorialState.Bumper);
     }
 
     void Update()
     {
         if (canPlay)
             PlayVideo();
-    }
-
-    private void OnDisable()
-    {
-        EventsManager.current.onTutorialProgres -= CheckPlayIntro;
-        videoplayer.loopPointReached -= CheckIsDone;
     }
 
     private void PlayVideo()

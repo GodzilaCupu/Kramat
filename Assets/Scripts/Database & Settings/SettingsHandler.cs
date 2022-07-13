@@ -40,9 +40,6 @@ public class SettingsHandler : MonoBehaviour
     private float f_brightness;
     private float f_sensitivity;
 
-    public float BrightnessData { get { return f_brightness; } set { f_brightness = value; } }
-    public float SensitivityData { get { return f_sensitivity; } set { f_sensitivity = value; } }
-
     [Header("Sound"), Space(5)]
     [SerializeField] private AudioMixer a_mainMixer;
     private string audioParameter_Master = "VolumeMaster";
@@ -53,45 +50,31 @@ public class SettingsHandler : MonoBehaviour
     private float f_vEffect;
     private float f_vMusic;
 
-    private float _audioMin = 0.0001f;
-    private float _audioMax = 1f;
-
-    public float VolumeMasterData { get { return f_vMaster; } set { f_vMaster = value; } }
-    public float VolumeMusicData { get { return f_vEffect; } set { f_vEffect = value; } }
-    public float VolumeEffectData { get { return f_vMusic; } set { f_vMusic = value; } }
-
-
     [Header("Graphic"), Space(5)]
+    
     [SerializeField] private Toggle toggle_FullScreen;
     private bool Fullscreen_Mode;
-    public bool isFullscreen { get { return Fullscreen_Mode; } set { Fullscreen_Mode = value; } }
 
-    [SerializeField] private UniversalRenderPipelineAsset[] QualitySettings;
     [SerializeField, Tooltip("0 = Prev, 1 = next")] private Button[] btn_quality;
+    [SerializeField] private UniversalRenderPipelineAsset[] QualitySettings;
     [SerializeField] private TextMeshProUGUI t_quality;
     private int _qualityID = 1;
-    public int QualityID { get { return _qualityID; } set { _qualityID = value; } }
 
     [Header("Panel Configuration"), Space(10)]
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private Scrollbar Scrolbar;
     [SerializeField] private Button btn_ResetConfig;
     [SerializeField] private Button btn_ExitPanel;
-    [SerializeField] private Scrollbar Scrolbar;
 
     [Header("Script Referance"), Space(10)]
     [SerializeField] private GameObject o_manager;
-    [SerializeField] private SettingsData _data;
 
     private void Start()
     {
         Cursor.SetCursor(cursorSprite, Vector2.zero,CursorMode.Auto);
-        if (!settingsPanel.activeInHierarchy)
-        {
-            settingsPanel.SetActive(true);
-            GetValue();
-            settingsPanel.SetActive(false);
-        }
-        SetButton();
+        SetGeneralButton();
+        SetButtonQuality();
+        SetToogleFullScreen();
         EventsManager.current.onOpenPanelSettings += OpenPanel;
     }
 
@@ -107,33 +90,23 @@ public class SettingsHandler : MonoBehaviour
 
     private void CheckSettings()
     {
-        BrightnessSettings();
-        SensitivitySettings();
+        SetBrightness();
+        SetSensitivity();
         MasterAudioSettings();
         EffectAudioSettings();
         MusicAudioSettings();
-        FullScreenModeSettings();
-        CheckQuality(_qualityID);
+        CheckQuality();
     }
 
     private void GetValue()
     {
-        Fullscreen_Mode = toggle_FullScreen.isOn ? true : false;
-        switch (t_quality.text.ToString())
-        {
-            case "Low":
-                _qualityID = 0;
-                break;
+        // Check toogle + Quality BTN
+        Fullscreen_Mode = Database.GetGraphic("FullScreen") == 1 ? true : false;
+        SetFullScreen(Fullscreen_Mode);
 
-            case "Medium":
-                _qualityID = 1;
-                break;
+        _qualityID = Database.GetGraphic("Quality");
 
-            case "High":
-                _qualityID = 2;
-                break;
-        }
-
+        // Check Button Component
         for (int i = 0; i < componenets.Count; i++)
         {
             switch (i)
@@ -162,22 +135,18 @@ public class SettingsHandler : MonoBehaviour
     }
 
     #region Reset & Close Button
-    private void SetButton()
+    private void SetGeneralButton()
     {
         btn_ExitPanel.onClick.AddListener(BackToPaused);
         btn_ResetConfig.onClick.AddListener(ResetConfig);
     }
 
-
-    private void BackToPaused()
-    {
-        ActivationPanel(false);
-    }
+    private void BackToPaused() => ActivationPanel(false);
 
     private void ResetConfig()
     {
         _qualityID = DefaultValue_Quality;
-        Fullscreen_Mode = DefaultValue_Fullscreen;
+        toggle_FullScreen.isOn = DefaultValue_Fullscreen;
 
         for (int i = 0; i < componenets.Count; i++)
         {
@@ -204,32 +173,46 @@ public class SettingsHandler : MonoBehaviour
                     break;
             }
         }
-
-        SaveDataSettings();
     }
-
     #endregion
 
     #region Panel Configuration;
     private void OpenPanel()
     {
         ActivationPanel(true);
-        CheckDatabase();
         Scrolbar.value = 1;
     }
 
     private void ActivationPanel(bool isActive)
     {
         settingsPanel.SetActive(isActive);
-        SaveDataSettings(); 
-        GetValue();
+        switch (isActive)
+        {
+            case true:
+                GetValue();
+                break;
+
+            case false:
+                CheckSettings();
+                SaveData();
+                break;
+        } 
 }
     #endregion
 
     #region Gameplay Configuration
-    private void BrightnessSettings() => EventsManager.current.ChangeBrightness(f_brightness);
+    private void SetBrightness()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu") return;
+        EventsManager.current.ChangeBrightness(f_brightness);
+    }
 
-    private void SensitivitySettings() => EventsManager.current.ChangeSensitivy(f_sensitivity);
+    private void SetSensitivity()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu") return;
+        EventsManager.current.ChangeSensitivy(f_sensitivity);
+    }
+
     #endregion
 
     #region Sound Configuration
@@ -243,43 +226,58 @@ public class SettingsHandler : MonoBehaviour
     private void EffectAudioSettings() => a_mainMixer.SetFloat(audioParameter_Effect, Mathf.Log10(componenets[((int)enum_SettingsComponent.VolumeEffect)].Value) * 20);
     #endregion
 
+
     #region Graphic Configuration
 
-    private void FullScreenModeSettings() => toggle_FullScreen.onValueChanged.AddListener((v) => SetFullScreen(v));
+    private void SetToogleFullScreen() => toggle_FullScreen.onValueChanged.AddListener((v) => SetFullScreen(v));
 
     private void SetFullScreen(bool v)
     {
         Screen.fullScreen = v;
         Fullscreen_Mode = v;
+        Database.SetGraphic("FullScreen", Fullscreen_Mode ? 1 : 0);
+
+        if (Fullscreen_Mode)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            return;
+        }
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void IncrementQuality() => _qualityID++;
-    public void DecrementQuality() => _qualityID--;
-
-    private void CheckQuality(int value)
+    private void SetButtonQuality()
     {
-        switch (value)
+        btn_quality[0].onClick.AddListener(DecrementQuality);
+        btn_quality[1].onClick.AddListener(IncrementQuality);
+    }
+
+    private void IncrementQuality() => _qualityID++;
+    private void DecrementQuality() => _qualityID--;
+
+    private void CheckQuality()
+    {
+        switch (_qualityID)
         {
             case 0:
                 t_quality.text = "Low";
                 btn_quality[0].interactable = false;
                 btn_quality[1].interactable = true;
 
-                GraphicsSettings.renderPipelineAsset = QualitySettings[value];
+                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
                 break;
 
             case 1:
                 t_quality.text = "Medium";
                 btn_quality[1].interactable = true;
                 btn_quality[0].interactable = true;
-                GraphicsSettings.renderPipelineAsset = QualitySettings[value];
+                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
                 break;
 
             case 2:
                 t_quality.text = "High";
                 btn_quality[0].interactable = true;
                 btn_quality[1].interactable = false; 
-                GraphicsSettings.renderPipelineAsset = QualitySettings[value];
+                GraphicsSettings.renderPipelineAsset = QualitySettings[_qualityID];
                 break;
         }
     
@@ -287,16 +285,22 @@ public class SettingsHandler : MonoBehaviour
     #endregion
 
     #region Save System
-    public void SaveDataSettings() => Save_Data.SaveSettings(this);
-
-    public void CheckDatabase()
+    public void SaveData()
     {
-        SettingsData data = Save_Data.LoadSettings();
-        isFullscreen = data.Fullscreen_Mode;
-        QualityID = data._qualityID;
-        _data = data;
-        Debug.Log($"Check DataBase for Quality && Fullscreen");
+        // Gameplay
+        Database.SetGameplay("Brightness", f_brightness);
+        Database.SetGameplay("Sensitivity", f_sensitivity);
+
+        // Audio
+        Database.SetAudio("Master", f_vMaster);
+        Database.SetAudio("Effect", f_vEffect);
+        Database.SetAudio("Music", f_vMusic);
+
+        // Graphic
+        Database.SetGraphic("FullScreen", Fullscreen_Mode ? 1 : 0);
+        Database.SetGraphic("Quality", _qualityID);
     }
+
     #endregion
 
 }

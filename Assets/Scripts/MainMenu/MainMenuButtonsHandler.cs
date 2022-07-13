@@ -36,19 +36,21 @@ public class MainMenuButtonsHandler : MonoBehaviour
 
     private void CheckContinue()
     {
-        if(manager.WetanProgres == 0 && manager.BosFightProgres == 0)
+        if(manager.LastProgresTutorial() == 0)
         {
             alreadyPlay = false;
             return;
         }
+
+        alreadyPlay = true;
 
         if (!alreadyPlay)
         { 
             btn_MainMenu[0].gameObject.SetActive(false);
             return;
         }
-        btn_MainMenu[0].gameObject.SetActive(true);
 
+        btn_MainMenu[0].gameObject.SetActive(true);
     }
 
     private void CallingButtons()
@@ -92,27 +94,12 @@ public class MainMenuButtonsHandler : MonoBehaviour
 
     private void ContinueGame()
     {
-        ProgresData data = Save_Data.LoadProgres();
-        string lastScene = data.lastSceneName;
+        string lastScene = Database.GetLastScene();
         SceneManager.LoadScene(lastScene);
     }
     
-    private void OpenSettingsPanel()
-    { 
-        EventsManager.current.OpenPanelSettings();
-        Debug.Log($" ur id {enum_MainMenuButtons.Settings.ToString()}");
-    }
-
-    private void OpenCreditsPanel() 
-    {
-        EventsManager.current.OpenPanelCredits();
-        Debug.Log($" ur id {enum_MainMenuButtons.Credits.ToString()}");
-    }
-
-    private void ExitGame()
-    {
-        Application.Quit();
-        Debug.Log($" ur id {enum_MainMenuButtons.ExitGame.ToString()}");
-    }
+    private void OpenSettingsPanel() => EventsManager.current.OpenPanelSettings();
+    private void OpenCreditsPanel()  => EventsManager.current.OpenPanelCredits();
+    private void ExitGame() => Application.Quit();
 }
 

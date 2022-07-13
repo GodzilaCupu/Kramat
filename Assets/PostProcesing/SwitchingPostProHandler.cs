@@ -22,6 +22,10 @@ public class SwitchingPostProHandler : MonoBehaviour
     [Header("Pos Pro Component")]
     [SerializeField] private bool isOn_PosPro;
     [SerializeField] private Volume posProData;
+
+    private VolumeProfile currentProfile;
+    [SerializeField] private ColorAdjustments color;
+
     [SerializeField] private VolumeProfile[] posProProfileData;
 
     // Start is called before the first frame update
@@ -31,7 +35,17 @@ public class SwitchingPostProHandler : MonoBehaviour
         features = fr_data.rendererFeatures.ToArray();
         feature = features[0];
         CheckScene(SceneManager.GetActiveScene());
+        GetBrightness();
+
+        EventsManager.current.onChangeBrightness += CheckBrightness;
     }
+
+    private void OnDisable()
+    {
+        EventsManager.current.onChangeBrightness -= CheckBrightness;
+    }
+
+
     private void CheckScene(Scene thisScene)
     {
         currentScene = thisScene;
@@ -128,5 +142,13 @@ public class SwitchingPostProHandler : MonoBehaviour
 
     private void ActivationPosPro(bool isOn) => posProData.enabled = isOn;
     private void ChangePosPro(int id) => posProData.profile = posProProfileData[id];
+    private void CheckBrightness(float value) => color.postExposure.value = value;
+    private void GetBrightness()
+    {
+        ColorAdjustments tmp;
+        if (posProData.profile.TryGet<ColorAdjustments>(out tmp))
+            color = tmp;
+
+    }
 
 }

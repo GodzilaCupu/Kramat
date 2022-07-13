@@ -28,6 +28,12 @@ public class PausedHandler : MonoBehaviour
             CheckPaused(true);
     }
 
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus) return;
+
+        CheckPaused(true);
+    }
     private void SetButton()
     {
         btn_pause[0].onClick.AddListener(delegate { CheckPaused(false); });
@@ -54,7 +60,7 @@ public class PausedHandler : MonoBehaviour
     {
         CheckPaused(false);
         SceneManager.LoadScene("MainMenu");
-        manager.SaveProgres();
+        manager.SaveProgres(SceneManager.GetActiveScene().name, Database.GetProgresScene(SceneManager.GetActiveScene().name));
     }
 
     public void OpenSettings() => EventsManager.current.OpenPanelSettings();

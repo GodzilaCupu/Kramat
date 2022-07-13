@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SettingsComponentHandler : MonoBehaviour
 {
     [SerializeField] private string Name;
-    [SerializeField] private SettingsData _data;
     
     [Header("Value"),Space(10)]
     [SerializeField] private float incrementValue;
@@ -31,11 +31,10 @@ public class SettingsComponentHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetButton();
-        SetValueSlider();
-        CheckTextValue();
-        CheckValueSlider();
         EventsManager.current.onOpenPanelSettings += CheckDataBase;
+
+        SetButton();
+        SetSlider();
     }
 
     private void OnDisable()
@@ -43,33 +42,37 @@ public class SettingsComponentHandler : MonoBehaviour
         EventsManager.current.onOpenPanelSettings -= CheckDataBase;
     }
 
+    private void Update()
+    {
+        CheckButton();
+        CheckTextSlider();
+        CheckValueSlider();
+    }
+
     private void CheckDataBase()
     {
-        SettingsData data = Save_Data.LoadSettings();
         switch (Name)
         {
             case "Brightness":
-                currentValue = data.brightnesData;
+                currentValue = Database.GetGameplay("Brightness");
                 break;
 
             case "Sensitivity":
-                currentValue = data.sensitivityData;
+                currentValue = Database.GetGameplay("Sensitivity");
                 break;
 
             case "VolumeMaster":
-                currentValue = data.vMasterData;
+                currentValue = Database.GetAudio("Master");
                 break;
 
             case "VolumeMusic":
-                currentValue = data.vEffectData;
+                currentValue = Database.GetAudio("Music");
                 break;
 
             case "VolumeEffect":
-                currentValue = data.vMusicData;
+                currentValue = Database.GetAudio("Effect");
                 break;
         }
-        _data = data;
-        Debug.Log($"Check DataBase for {Name}");
     }
 
     public void SetDefaultValue(float value) => currentValue = value;
@@ -81,44 +84,29 @@ public class SettingsComponentHandler : MonoBehaviour
         btn_Increment.onClick.AddListener(SetIncrementValueButton);
     }
 
+    public void SetIncrementValueButton() => currentValue += incrementValue;
+    public void SetDecrementValueButton() => currentValue -= incrementValue;
+
     private void CheckButton()
     {
         btn_Decrement.interactable = slider_Value.value == minValue ? false : true;
         btn_Increment.interactable = slider_Value.value == maxValue ? false : true;
     }
-
-    public void SetIncrementValueButton()
-    {
-        currentValue += incrementValue;
-        CheckValueSlider();
-    }
-    public void SetDecrementValueButton()
-    {
-        currentValue -= incrementValue;
-        CheckValueSlider();
-    }
     #endregion
 
     #region Slider
-    public void SetValueSlider()
+    public void SetSlider()
     {
         slider_Value.maxValue = maxValue;
         slider_Value.minValue = minValue;
-        slider_Value.onValueChanged.AddListener(GetValueChangeSlider);
-    }
-
-    private void GetValueChangeSlider(float input)
-    {
-        currentValue = input;
-        CheckTextValue();
-        CheckButton();
+        slider_Value.onValueChanged.AddListener((v) => currentValue = v) ;
     }
 
     private void CheckValueSlider() => slider_Value.value = currentValue;
     #endregion
 
     #region Text
-    public void CheckTextValue()
+    public void CheckTextSlider()
     {
         double finalNumbeer = System.Math.Round(currentValue,2);
         txt_value.text = finalNumbeer.ToString();

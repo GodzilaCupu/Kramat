@@ -170,7 +170,7 @@ public class ControllerPlayer : MonoBehaviour
         {
             EventsManager.current.onGrabItemTrigger += GrabItem;
             EventsManager.current.onTurnOffMovement += CheckMovement;
-            EventsManager.current.onChangeSensitivy += (v) => rotationSpeed += v;
+            EventsManager.current.onChangeSensitivy += (v) => rotationSpeed = v;
             if(scenesName == enum_ScenesName.BosFight)
             {
                 EventsManager.current.onAttackTrigger += Attack;
@@ -182,7 +182,7 @@ public class ControllerPlayer : MonoBehaviour
 
         EventsManager.current.onGrabItemTrigger -= GrabItem;
         EventsManager.current.onTurnOffMovement -= CheckMovement;
-        EventsManager.current.onChangeSensitivy += (v) => rotationSpeed -= v;
+        EventsManager.current.onChangeSensitivy -= (v) => rotationSpeed = v;
 
         if (scenesName == enum_ScenesName.BosFight)
         {

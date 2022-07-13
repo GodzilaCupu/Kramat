@@ -8,26 +8,20 @@ public class GameManager : MonoBehaviour
     public Transform PlayerPos;
 
     private string sceneName;
-    public string LastSceneName;
-
-    public int TutorialProgres;
-    public int WetanProgres;
-    public int KulonProgres;
-    public int BosFightProgres;
 
     private void Start()
     {
         sceneName = SceneManager.GetActiveScene().name;
-        LastSceneName = sceneName;
+        Database.SetLastScene(sceneName);
     }
 
-    public void LoadLastPosPlayer(ProgresData data) => PlayerPos.position = new Vector3(data.PlayerPositions[0], data.PlayerPositions[1], data.PlayerPositions[2]);
+    public void SavePlayerPos() => Database.SetPlayerPos(PlayerPos.position);
 
-    public void LoadLastProgresTutorial(ProgresData data) => TutorialProgres = data.tutorialProgres;
-    public void LoadLastProgresWetan(ProgresData data) => WetanProgres = data.wetanProgres;
-    public void LoadLastProgresKulon(ProgresData data) => KulonProgres = data.kulonProgres;
-    public void LoadLastProgresBosFight(ProgresData data) => BosFightProgres = data.bosFightProgres;
+    public void SaveProgres(string thisSceneName, int currentProgres) => Database.SetProgresScene(thisSceneName, currentProgres);
+    public void LoadPlayerPos(Transform target) => target.position = Database.GetPlayerPos();
 
-
-    public void SaveProgres() => Save_Data.SaveProgres(this);
+    public int LastProgresTutorial() => Database.GetProgresScene("Tutorial");
+    public int LastProgresWetan() => Database.GetProgresScene("Wetan");
+    public int LastProgresKulon() => Database.GetProgresScene("Kulon");
+    public int LastProgresBosFight() => Database.GetProgresScene("BosFight");
 }
