@@ -67,6 +67,13 @@ public class PausedHandler : MonoBehaviour
     public void OpenSettings() => EventsManager.current.OpenPanelSettings();
     private void CheckCursor()
     {
+        if (SceneManager.GetActiveScene().name == enum_ScenesName.MainMenu.ToString())
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None; 
+            return;
+        }
+
         if (isPaused)
         {
             Cursor.visible = true;

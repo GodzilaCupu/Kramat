@@ -160,7 +160,6 @@ public class ControllerPlayer : MonoBehaviour
         if (name == enum_ScenesName.BosFight)
             return;
 
-        CheckPlaceItem();
         GetNameItem();
     }
 
@@ -399,12 +398,17 @@ public class ControllerPlayer : MonoBehaviour
             OpenNote();
             return;
         }
-        item.transform.GetComponent<Rigidbody>().isKinematic = true;
-        item.transform.position = handPos.transform.position;
-        item.transform.parent = handPos.transform;
-        isCarried = true;
-        anim.SetTrigger(grabAnimatorID);
 
+        if(handPos.transform.childCount == 0)
+        {
+            item.transform.GetComponent<Rigidbody>().isKinematic = true;
+            item.transform.position = handPos.transform.position;
+            item.transform.parent = handPos.transform;
+            isCarried = true;
+            anim.SetTrigger(grabAnimatorID);
+            return;
+        }
+        PlaceItem();
     }
 
     private void OpenNote()
@@ -414,18 +418,13 @@ public class ControllerPlayer : MonoBehaviour
         note.OpenNote();
     }
 
-    private void PlaceItem()
+    public void PlaceItem()
     {
-        GameObject item = handPos.transform.GetChild(0).gameObject;
-        item.transform.GetComponent<Rigidbody>().isKinematic = false;
-        item.transform.parent = itemContainer.transform;
+        if (handPos.transform.childCount == 0) return;
+        GameObject ojb = handPos.transform.GetChild(0).gameObject;
+        ojb.transform.GetComponent<Rigidbody>().isKinematic = false;
+        ojb.transform.parent = itemContainer.transform;
         isCarried = false;
-    }
-
-    private void CheckPlaceItem()
-    {
-        if(raycast.isGrabing && isCarried)
-            PlaceItem();
     }
 
     public void ItemKulon()

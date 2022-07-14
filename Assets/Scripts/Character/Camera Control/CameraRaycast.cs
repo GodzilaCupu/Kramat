@@ -112,7 +112,15 @@ public class CameraRaycast : MonoBehaviour
 
     private void CheckInRange()
     {
-        if (!inRange()) return;
+        if (!inRange())
+        {
+            if (isGrabing)
+            {
+                ControllerPlayer player = GameObject.FindGameObjectWithTag("Player").GetComponent<ControllerPlayer>();
+                player.PlaceItem();
+            }
+            return;
+        }
 
         if (ray.transform.gameObject.tag == "Item")
         {

@@ -75,6 +75,7 @@ public class SettingsHandler : MonoBehaviour
         SetGeneralButton();
         SetButtonQuality();
         SetToogleFullScreen();
+        CheckFullScreen();
         if (f_sensitivity == null || f_sensitivity == 0) f_sensitivity = DefaultValue_Sensitivity;
         EventsManager.current.onOpenPanelSettings += OpenPanel;
     }
@@ -239,6 +240,7 @@ public class SettingsHandler : MonoBehaviour
         Database.SetGraphic("FullScreen", Fullscreen_Mode ? 1 : 0);
     }
 
+    private void CheckFullScreen() => Database.SetGraphic("FullScreen", Screen.fullScreen ? 1 : 0);
     private void SetButtonQuality()
     {
         btn_quality[0].onClick.AddListener(DecrementQuality);
