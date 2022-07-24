@@ -12,6 +12,7 @@ public class KulonStoryHandler : MonoBehaviour
     [SerializeField] private GameObject go_panelFade;
     [SerializeField] private CanvasGroup cg_transition;
     [SerializeField] private CanvasGroup cg_fade;
+    [SerializeField] private GameObject handpos;
 
     private int progresID;
     private int dialogProgresID;
@@ -19,6 +20,7 @@ public class KulonStoryHandler : MonoBehaviour
     public int ProgresID { get { return progresID; } }
     void Start()
     {
+        handpos = GameObject.Find("Handle Pos");
         noteHandler = GameObject.Find("Panel_Note").GetComponent<NoteHandler>();
         dialogHandler = GameObject.Find("Popup_Percakapan").GetComponent<DialogHandler>();
         SetTransistion();
@@ -41,7 +43,7 @@ public class KulonStoryHandler : MonoBehaviour
         cg_transition = go_panelTransition.GetComponent<CanvasGroup>();
 
         LeanTween.alphaCanvas(cg_transition, 0, 1f);
-        if(cg_transition.alpha == 0)
+        if(cg_transition.alpha == 1)
         {
             go_panelTransition.SetActive(false);
             EventsManager.current.SetActivationMovement(true);
@@ -60,6 +62,17 @@ public class KulonStoryHandler : MonoBehaviour
         switch (progresID)
         {
             case 0:
+                if(cg_transition.alpha == 1)
+                {
+                    LeanTween.alphaCanvas(cg_transition, 0, 1f);
+                    return;
+                }
+                if (cg_transition.alpha == 1)
+                {
+                    go_panelTransition.SetActive(false);
+                    EventsManager.current.SetActivationMovement(true);
+                    return;
+                }
                 if (dialogProgresID != 2) return;
                 if (!dialogHandler.IsFinished) return;
                 EventsManager.current.CheckKulonProgres(1);
@@ -72,11 +85,13 @@ public class KulonStoryHandler : MonoBehaviour
                 break;
 
             case 2:
-                // Baca Note + Ambil Kalung akik
+                if (progresID != 2) return;
+                if (handpos.transform.childCount != 1) return;
+                if (handpos.transform.GetChild(0).name == "Petromax") EventsManager.current.CheckKulonProgres(3);
                 break;
 
             case 3:
-                // Bawa lentera Ke Trigger + Ikutin Anak Kecil
+                // Baca Note + Ambil Kalung akik
                 break;
 
             case 4:

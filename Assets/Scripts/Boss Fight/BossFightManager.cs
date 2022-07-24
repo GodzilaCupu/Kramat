@@ -17,11 +17,14 @@ public class BossFightManager : MonoBehaviour
     [SerializeField] private GenderuwoHandler genderuwo;
     [SerializeField] private int bosFightProgres;
     [SerializeField] private List<SesajenHandler> sesajenProgres;
+    [SerializeField] private float Timer;
+    float currentTimer;
     public int sesajenCurrentProgres;
 
 
     void Start()
     {
+        currentTimer = Timer;
         EventsManager.current.onBosFightProgres += GetProgres;
     }
 
@@ -51,7 +54,7 @@ public class BossFightManager : MonoBehaviour
                 break;
 
             case ((int)enum_GenderuwoState.Genderuwo2):
-                EventsManager.current.BosFightProgres(sesajenCurrentProgres == 3 ? 3 : bosFightProgres);
+                EventsManager.current.BosFightProgres(sesajenCurrentProgres == 4 ? 3 : bosFightProgres);
                 break;
 
             case 3:
@@ -59,6 +62,7 @@ public class BossFightManager : MonoBehaviour
                 if (id != 3) return;
                 if (!dialogHandler.IsFinished) return; 
                 genderuwo.Death();
+                fade.FadeIn();
                 break;
         }
     }

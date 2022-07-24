@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{384202B2-256A-0CEC-CAE0-8207556CA9B8}</ProjectGuid>
+    <ProjectGuid>{B0FF9668-2CA7-DC49-D9C6-98BA048EFEAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.RenderPipelines.Universal.Runtime</AssemblyName>
@@ -774,27 +774,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{8FA507E5-20C1-FADA-B3DB-65FEB8AD95AD}</Project>
+      <Project>{49BD43A2-C625-51ED-E385-3135BDB7F981}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
-      <Project>{2CA2C263-7FDB-5308-23C3-492C1AC92F06}</Project>
+      <Project>{42924F49-4D64-7D8D-8AC1-94957435AA91}</Project>
       <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.csproj">
-      <Project>{CCED3A05-F04C-FA76-DEB0-2C6DA2A17817}</Project>
+      <Project>{C0349FD7-E663-BAEE-864C-A13AC257D266}</Project>
       <Name>Unity.AdaptivePerformance</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{CE163971-4844-BD47-C28E-2A6E955F4BBE}</Project>
+      <Project>{061A2D4C-FAFA-8878-58F2-98D0BD509F21}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{2501CA4A-0D2D-1240-E476-3BA10A979DB6}</Project>
+      <Project>{D002B504-7731-DFF3-B6E4-2CDAB3F17C1A}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{984AA37A-CBAE-D857-C67B-D28FF4FF9C51}</Project>
+      <Project>{3281729F-58FE-A326-D284-D0BC9415F841}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>

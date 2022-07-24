@@ -408,7 +408,6 @@ public class ControllerPlayer : MonoBehaviour
             anim.SetTrigger(grabAnimatorID);
             return;
         }
-        PlaceItem();
     }
 
     private void OpenNote()

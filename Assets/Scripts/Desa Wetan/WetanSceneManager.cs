@@ -66,7 +66,7 @@ public class WetanSceneManager : MonoBehaviour
         {
 
             // Bangun Tidur (Task Ke Kades)
-            case 0 :
+            case 0:
                 if (dialogProgresID != 1) return;
                 if (!dialogHandler.IsFinished) return;
                 EventsManager.current.CheckProgresWetan(1);
@@ -149,7 +149,7 @@ public class WetanSceneManager : MonoBehaviour
 
     private void CheckSawah()
     {
-        if(panelFade.GetComponent<CanvasGroup>().alpha == 1)
+        if (panelFade.GetComponent<CanvasGroup>().alpha == 1)
         {
             if (sawahHandler.sawahDone <= 1)
             {

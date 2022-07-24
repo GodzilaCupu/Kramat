@@ -222,7 +222,7 @@ public class NPC_Wetan_Handler : MonoBehaviour
                 if (!canTalk)
                     return;
 
-                if(storyHandler.SawahDone) EventsManager.current.DialogWetanProgres(3);
+                if (storyHandler.SawahDone) EventsManager.current.DialogWetanProgres(3);
                 break;
 
             default:
@@ -243,7 +243,7 @@ public class NPC_Wetan_Handler : MonoBehaviour
             case ((int)enum_WetanState.TemuiKetuaAdat):
                 if (!canTalk)
                     return;
-                
+
                 EventsManager.current.DialogWetanProgres(4);
                 break;
 
@@ -262,7 +262,7 @@ public class NPC_Wetan_Handler : MonoBehaviour
 
                 if (!canTalk)
                     return;
-                
+
                 EventsManager.current.DialogWetanProgres(8);
                 break;
 

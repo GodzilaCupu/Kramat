@@ -36,7 +36,7 @@ public class GenderuwoHandler : MonoBehaviour
     private int isDeathtoHash;
     private int isAttacktoHash;
     private int attackLeft = 3;
-
+    private Fade fade;
 
     private bool canMove = false;
     private void Start()
@@ -44,6 +44,7 @@ public class GenderuwoHandler : MonoBehaviour
         t_player = go_player.GetComponent<Transform>();
         anim_Genderuwo = GetComponent<Animator>();
         nm_Genderuwo = GetComponent<NavMeshAgent>();
+        fade = GameObject.Find("Fade").GetComponent<Fade>();
 
         isWalkingtoHash = Animator.StringToHash("isWalking");
         isAttacktoHash = Animator.StringToHash("isAttack");
@@ -140,7 +141,7 @@ public class GenderuwoHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         anim_Genderuwo.SetBool(isDeathtoHash, true);
-        if (anim_Genderuwo.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f) SceneManager.LoadScene("Scene5");
+        if (anim_Genderuwo.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f) fade.FadeIn();
     }
 
     IEnumerator WaitToStartAttack()

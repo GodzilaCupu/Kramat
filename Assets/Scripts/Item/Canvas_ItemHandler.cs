@@ -95,29 +95,35 @@ public class Canvas_ItemHandler : MonoBehaviour
                 break;
 
             case "Gergaji":
-                imgItem.sprite = imgItemContainner[1];
+                imgItem.sprite = imgItemContainner[0];
                 sItem = textItemContainner[1];
                 break;
 
             case "Kalung":
-                imgItem.sprite = imgItemContainner[2];
+                imgItem.sprite = imgItemContainner[0];
                 sItem = textItemContainner[2];
                 break;
 
             case "Keris":
-                imgItem.sprite = imgItemContainner[3];
+                imgItem.sprite = imgItemContainner[0];
                 sItem = textItemContainner[3];
                 break;
 
             case "Kunci":
-                imgItem.sprite = imgItemContainner[4];
+                imgItem.sprite = imgItemContainner[0];
                 sItem = textItemContainner[4];
                 break;
 
             case "Petromax":
-                imgItem.sprite = imgItemContainner[5];
+                imgItem.sprite = imgItemContainner[0];
                 sItem = textItemContainner[5];
                 break;
+
+            case "Note":
+                imgItem.sprite = imgItemContainner[0];
+                sItem = textItemContainner[6];
+                break;
+
         }
     }
 
@@ -126,22 +132,22 @@ public class Canvas_ItemHandler : MonoBehaviour
         switch (nameNPC)
         {
             case "KepalaDesa":
-                imgNPC.sprite = imgItemContainner[6];
+                imgNPC.sprite = imgItemContainner[1];
                 sNPC = textNPCContainner[0];
                 break;
 
             case "KetuaAdat":
-                imgNPC.sprite = imgItemContainner[6];
+                imgNPC.sprite = imgItemContainner[1];
                 sNPC = textNPCContainner[1];
                 break;
 
             case "Cokro":
-                imgNPC.sprite = imgItemContainner[6];
+                imgNPC.sprite = imgItemContainner[1];
                 sNPC = textNPCContainner[2];
                 break;
 
             case "Aji":
-                imgNPC.sprite = imgItemContainner[6];
+                imgNPC.sprite = imgItemContainner[1];
                 sNPC = textNPCContainner[3];
                 break;
         }

@@ -9,6 +9,13 @@ public class Ki_DalangHandler : MonoBehaviour
     [SerializeField] private Rigidbody rb_kidalang;
     [SerializeField] private Animator anim;
 
+    [Header("Tergeletak")]
+    [SerializeField] private GameObject meshKidalang1;
+    [SerializeField] private GameObject meshKidalang2;
+    [SerializeField] private GameObject itemContainner;
+    [SerializeField] private GameObject kalung;
+    [SerializeField] private AudioSource sounds;
+
     [Header("Data")]
     [SerializeField] private float f_minDistance;
     [SerializeField] private float f_distanceToPlayer;
@@ -20,11 +27,8 @@ public class Ki_DalangHandler : MonoBehaviour
     void Start()
     {
         controllerPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<ControllerPlayer>();
-        rb_kidalang = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
 
-        rb_kidalang.isKinematic = true;
-        rb_kidalang.useGravity = false;
+
         EventsManager.current.onKulonProgres += (v) => progresID = v;
     }
 
@@ -44,10 +48,11 @@ public class Ki_DalangHandler : MonoBehaviour
 
         if(f_distanceToPlayer < f_minDistance)
         {
-            anim.enabled = false;
-            rb_kidalang.isKinematic = false;
-            rb_kidalang.useGravity = true;
+            meshKidalang1.SetActive(false);
+            meshKidalang2.SetActive(true);
+            kalung.SetActive(true);
             AlreadyFalling = true;
+            sounds.Play();
         }
     }
 }

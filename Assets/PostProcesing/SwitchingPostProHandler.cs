@@ -29,7 +29,7 @@ public class SwitchingPostProHandler : MonoBehaviour
     [SerializeField] private VolumeProfile[] posProProfileData;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         posProData = GetComponent<Volume>();
         features = fr_data.rendererFeatures.ToArray();

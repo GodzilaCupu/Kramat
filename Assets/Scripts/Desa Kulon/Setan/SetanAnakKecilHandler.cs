@@ -40,7 +40,7 @@ public class SetanAnakKecilHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        kiDalanghandler = GameObject.Find("Ki Dalang").GetComponent<Ki_DalangHandler>();
+        kiDalanghandler = GameObject.Find("KiDalang").GetComponent<Ki_DalangHandler>();
         GetAnimationParameter();
         EventsManager.current.onKulonProgres += CheckProgres;
     }
@@ -55,7 +55,7 @@ public class SetanAnakKecilHandler : MonoBehaviour
     private void GetAnimationParameter()
     {
         walkAnimtoHash = Animator.StringToHash("isWalking");
-        pointingAnimtoHash = Animator.StringToHash("isNunjuk");
+        pointingAnimtoHash = Animator.StringToHash("isNujuk");
     }
 
     // Update is called once per frame
@@ -77,13 +77,13 @@ public class SetanAnakKecilHandler : MonoBehaviour
                 break;
 
             case 2:
-                if (!kiDalanghandler.AlreadyFalling) return;
+                if (kiDalanghandler.AlreadyFalling)
                 PointingDrawer();
                 break;
 
             case 3:
                 WalkingToBosFight();
-                CheckInDestination(tr_waypoint[3],f_minRangeToDestination);
+                CheckInDestination(tr_waypoint[4],f_minRangeToDestination);
                 break;
         }
     }
@@ -144,28 +144,33 @@ public class SetanAnakKecilHandler : MonoBehaviour
 
     private void WalkingToBosFight()
     {
+        if (!nva_this.hasPath)
+        {
+            gameObject.transform.position = tr_waypoint[3].position;
+            gameObject.transform.rotation = tr_waypoint[3].rotation;
+            nva_this.SetDestination(tr_waypoint[4].position);
+            return;
+        }
+
         if (onDestination)
         {
-            nva_this.ResetPath();
             gameObject.transform.rotation = tr_waypoint[4].rotation;
             anim_this.SetBool(pointingAnimtoHash, true);
             return;
         }
 
-        gameObject.transform.position = tr_waypoint[3].position;
-        gameObject.transform.rotation = tr_waypoint[3].rotation;
         anim_this.SetBool(pointingAnimtoHash, false);
-        nva_this.SetDestination(tr_waypoint[4].position);
-
-        if (f_distanceToPlayer() < f_minDistanceToPlayer)
+        if (f_distanceToPlayer() > 10f)
         {
             nva_this.isStopped = true;
             anim_this.SetBool(walkAnimtoHash, false);
             return;
         }
 
+        // Jalan KeTujuan
         nva_this.isStopped = false;
         anim_this.SetBool(walkAnimtoHash, true);
+
     }
 
 }

@@ -49,14 +49,14 @@ public class DialogHandler : MonoBehaviour
     {
         if (paused)
         {
-            as_Dialouge.Stop();
+            as_Dialouge.Pause();
             return;
         }
 
         if (!canPlayDialouge)
         {
             SetDeactivePanel();
-            as_Dialouge.Stop();
+            as_Dialouge.Pause();
             ResetDialogID();    
             return;
         }
@@ -198,7 +198,8 @@ public class DialogHandler : MonoBehaviour
 
     private void NextDialog()
     {
-        if (CustomInputMap.current.GetDialogSkip() && canNext && !isPlayingAudio) 
+        if (CustomInputMap.current.GetDialogSkip() && canNext && !isPlayingAudio)
+            //if (CustomInputMap.current.GetDialogSkip() && canNext)
         {
             countID++;
             isAlreadyPlay = false;

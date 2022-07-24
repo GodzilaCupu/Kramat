@@ -14,6 +14,7 @@ public class VideoIntroHandler : MonoBehaviour
     private VideoPlayer videoplayer;
 
     private bool canPlay;
+    private bool isPaused;
 
     void Start()
     {
@@ -21,12 +22,14 @@ public class VideoIntroHandler : MonoBehaviour
         t_video = go_container.GetComponent<RenderTexture>();
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
+        EventsManager.current.onPaused += (v) => isPaused = v; 
         EventsManager.current.onTutorialProgres += CheckPlayIntro;
         videoplayer.loopPointReached += CheckIsDone;
     }
 
     private void OnDisable()
     {
+        EventsManager.current.onPaused -= (v) => isPaused = v;
         EventsManager.current.onTutorialProgres -= CheckPlayIntro;
         videoplayer.loopPointReached -= CheckIsDone;
     }
@@ -35,13 +38,19 @@ public class VideoIntroHandler : MonoBehaviour
     {
         canPlay = false;
         videoplayer.Stop();
-        SceneManager.LoadScene("Wetan");
         go_container.SetActive(canPlay);
         manager.SaveProgres(SceneManager.GetActiveScene().name, (int)enum_TutorialState.Bumper);
+        SceneManager.LoadScene("Wetan");
     }
 
     void Update()
     {
+        if (isPaused)
+        {
+            videoplayer.Pause();
+            return;
+        }
+
         if (canPlay)
             PlayVideo();
     }
@@ -50,6 +59,7 @@ public class VideoIntroHandler : MonoBehaviour
     {
         if (!go_container.activeInHierarchy)
             go_container.SetActive(true);
+
 
         EventsManager.current.SetActivationMovement(false);
         EventsManager.current.PlaySFXTutorial(((int)enum_TutorialState.Bumper));

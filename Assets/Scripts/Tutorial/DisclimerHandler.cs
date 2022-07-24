@@ -17,21 +17,24 @@ public class DisclimerHandler : MonoBehaviour
     private CanvasGroup cg_text;
 
     private bool isPlay = false;
-
+    private bool isPaused;
     private void Start()
     {
         currentTimer = _targetTimer;
         cg_text = t_displayText.gameObject.GetComponent<CanvasGroup>();
+        EventsManager.current.onPaused += (v) => isPaused = v;
         EventsManager.current.onTutorialProgres += Current_onPlayDisclimer;
     }
 
     private void OnDisable()
     {
+        EventsManager.current.onPaused -= (v) => isPaused = v;
         EventsManager.current.onTutorialProgres -= Current_onPlayDisclimer;
     }
 
     private void Update()
     {
+        if (isPaused) return;
         DisclaimerPanel();
         if(_diclaimerProgres == 1)
         {
@@ -112,12 +115,12 @@ public class DisclimerHandler : MonoBehaviour
         if(_diclaimerProgres == 0)
         {
             t_displayText.text = s_displayText[0];
-            t_displayText.fontSize = 70f;
+            t_displayText.fontSize = 50;
         }
         else
         {
             t_displayText.text = s_displayText[1];
-            t_displayText.fontSize = 100f;
+            t_displayText.fontSize = 80f;
         }
     }
 

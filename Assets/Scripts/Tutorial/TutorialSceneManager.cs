@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum enum_TutorialState
 {
@@ -18,6 +19,12 @@ public class TutorialSceneManager : MonoBehaviour
 {
     [SerializeField] private int _tutorialProgresID;
     [SerializeField] private TutorialSFX_Handler sfx_Handler;
+    private GameManager manager;
+
+    private void Start()
+    {
+        manager = GetComponent<GameManager>();
+    }
 
     private void Update()
     {
@@ -44,33 +51,40 @@ public class TutorialSceneManager : MonoBehaviour
         {
             case 0:
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.Disclimer));
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID); 
                 break;
 
             case 1:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID);
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.Tutorial));
                 break;
 
             case 2:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID);
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.DialogPapan1));
                 EventsManager.current.PlayDialogTutorial(1);
                 break;
 
             case 3:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID);
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.DialogPapan2));         
                 EventsManager.current.PlayDialogTutorial(2);
                 break;
 
             case 4:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID);
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.DialogGamelan));
                 EventsManager.current.PlayDialogTutorial(3);
                 break;
 
             case 5:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID);
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.Credits));
                 EventsManager.current.OpenPanelCredits();
                 break;
 
             case 6:
+                manager.SaveProgres(SceneManager.GetActiveScene().name, _tutorialProgresID); 
                 EventsManager.current.CheckProgresTutorial(((int)enum_TutorialState.Bumper));
                 break;
 

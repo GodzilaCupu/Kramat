@@ -107,20 +107,13 @@ public class CameraRaycast : MonoBehaviour
 
         CheckCroshair();
         CheckInRange();
-
     }
 
     private void CheckInRange()
     {
         if (!inRange())
-        {
-            if (isGrabing)
-            {
-                ControllerPlayer player = GameObject.FindGameObjectWithTag("Player").GetComponent<ControllerPlayer>();
-                player.PlaceItem();
-            }
             return;
-        }
+
 
         if (ray.transform.gameObject.tag == "Item")
         {
@@ -133,6 +126,10 @@ public class CameraRaycast : MonoBehaviour
 
             if (isGrabing)
             {
+                ControllerPlayer player = GameObject.FindGameObjectWithTag("Player").GetComponent<ControllerPlayer>();
+                if (player.CarriedSomthing)
+                    player.PlaceItem();
+
                 EventsManager.current.CheckNameItem(ray.transform.gameObject.name);
                 EventsManager.current.GrabItemTrigger(ray.transform.gameObject);
             }
@@ -154,7 +151,7 @@ public class CameraRaycast : MonoBehaviour
         if (ray.transform.gameObject.tag == "Sesajen")
         {
             EventsManager.current.SetRaycast(true);
-            ChangeCrosshairColor(Color.yellow);
+            ChangeCrosshairColor(Color.blue);
             ChangeCrosshairSize(new Vector3(2, 2, 2));
             if (isGrabing)
                 EventsManager.current.AttackTrigger(ray.transform.gameObject);

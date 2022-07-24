@@ -5,6 +5,7 @@ using UnityEngine;
 public enum enum_TutorialTipsState
 {
     Movement,
+    Interactions,
     Flashlight,
     Run,
 }
@@ -20,7 +21,7 @@ public class TutorialTipsHandler : MonoBehaviour
     private int _currentTutorial = 0;
     
     private bool isPlay = false;
-
+    private bool isPaused;
 
     private void Start()
     {
@@ -30,18 +31,21 @@ public class TutorialTipsHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        EventsManager.current.onPaused += (v) => isPaused = v;
         EventsManager.current.onTutorialProgres += CheckProgres;
     }
 
     private void OnDisable()
     {
+        EventsManager.current.onPaused -= (v) => isPaused = v;
         EventsManager.current.onTutorialProgres += CheckProgres;
     }
 
     private void Update()
     {
         if (isPlay)
-            TutorialPanels();
+            if(!isPaused)
+                TutorialPanels();
     }
 
     private void CheckProgres(int id) => isPlay = id == ((int)enum_TutorialState.Tutorial) ? true : false;
@@ -71,6 +75,11 @@ public class TutorialTipsHandler : MonoBehaviour
                     currentTimer -= Time.deltaTime;
                     break;
 
+                case ((int)enum_TutorialTipsState.Interactions):
+                    SetActivePanel(enum_TutorialTipsState.Interactions);
+                    currentTimer -= Time.deltaTime;
+                    break;
+
                 case ((int)enum_TutorialTipsState.Flashlight):
                     SetActivePanel(enum_TutorialTipsState.Flashlight);
                     currentTimer -= Time.deltaTime;
@@ -94,6 +103,10 @@ public class TutorialTipsHandler : MonoBehaviour
                     SetDeactivePanel(enum_TutorialTipsState.Movement);
                     break;
 
+                case ((int)enum_TutorialTipsState.Interactions):
+                    SetDeactivePanel(enum_TutorialTipsState.Interactions);
+                    break;
+
                 case ((int)enum_TutorialTipsState.Flashlight):
                     SetDeactivePanel(enum_TutorialTipsState.Flashlight);
                     break;
@@ -115,6 +128,12 @@ public class TutorialTipsHandler : MonoBehaviour
         switch (state)
         {
             case enum_TutorialTipsState.Movement:
+                LeanTween.alphaCanvas(cg_Panels[((int)state)], 1, 0.5f);
+                if (cg_Panels[((int)state)].alpha > 0.89f)
+                    cg_Panels[((int)state)].alpha = 1f;
+                break;
+
+            case enum_TutorialTipsState.Interactions:
                 LeanTween.alphaCanvas(cg_Panels[((int)state)], 1, 0.5f);
                 if (cg_Panels[((int)state)].alpha > 0.89f)
                     cg_Panels[((int)state)].alpha = 1f;

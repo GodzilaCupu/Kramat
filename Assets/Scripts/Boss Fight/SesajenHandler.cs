@@ -52,20 +52,34 @@ public class SesajenHandler : MonoBehaviour
     private void SetType(int state)
     {
         if (isDone) return;
-        sesajenType[state].SetActive(true);
+        switch (state)
+        {
+            case 0:
+                sesajenType[0].SetActive(true);
+                sesajenType[1].SetActive(false);
+                sesajenType[2].SetActive(false);
+                break;
+
+            case 1:
+                sesajenType[0].SetActive(false);
+                sesajenType[1].SetActive(true);
+                sesajenType[2].SetActive(false);
+                break;
+
+            case 2:
+                sesajenType[0].SetActive(false);
+                sesajenType[1].SetActive(false);
+                sesajenType[2].SetActive(false);
+                isDone = true;
+                manager.sesajenCurrentProgres += 1;
+                break;
+        }
     }
 
     private void CheckSesajen(GameObject item)
     {
         if (id != item.GetComponent<SesajenHandler>().ID)
             return;
-
-        if (damageTaken == damageMax)
-        {
-            isDone = true;
-            manager.sesajenCurrentProgres = isDone ? +1 : +0;
-            return;
-        }
         damageTaken++;
     }
 }

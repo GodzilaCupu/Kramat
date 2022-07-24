@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B514BCDC-7E49-2327-9A3D-A18BFFC16369}</ProjectGuid>
+    <ProjectGuid>{839F5082-F954-B694-F19C-2684919BEA61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.AdaptivePerformance</AssemblyName>
@@ -653,11 +653,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Subsystem.Registration.Player.csproj">
-      <Project>{4C88D8CE-259F-9321-1921-A3BC4FE696E7}</Project>
+      <Project>{7A56EF28-EB26-FACA-8015-C7A9096CEF26}</Project>
       <Name>Unity.Subsystem.Registration.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{724AE864-9F24-E5C7-03BF-CF2270B8C81A}</Project>
+      <Project>{3DE03A12-2F7E-600B-0A1A-03AB59D64511}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>

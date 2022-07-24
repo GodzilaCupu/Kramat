@@ -47,8 +47,8 @@ public class TutorialSFX_Handler : MonoBehaviour
     {
         if(paused)
         {
-            a_source[0].Stop();
-            a_source[1].Stop();
+            a_source[0].Pause();
+            a_source[1].Pause();
             return;
         }
 
@@ -181,7 +181,7 @@ public class TutorialSFX_Handler : MonoBehaviour
     public void StopSound()
     {
         for (int i = 0; i < a_source.Length; i++)
-            a_source[i].Stop();
+            a_source[i].Pause();
 
         PlayLooping(false);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public enum enum_RumahKiDalang
 {
     Pintu,
-    Laci,
+    PintuRuang,
     BosFight
 }
 
@@ -13,6 +13,7 @@ public class PintuKiDalangHandler : MonoBehaviour
 {
     [SerializeField] private enum_RumahKiDalang status;
     [SerializeField] private GameObject go_current;
+    [SerializeField] private AudioSource sources;
     private ControllerPlayer player;
 
     private void Start()
@@ -34,18 +35,19 @@ public class PintuKiDalangHandler : MonoBehaviour
                         Animator pintu = go_current.GetComponent<Animator>();
                         pintu.SetTrigger("isOpenPintuRumah");
                         player.ItemKulon();
+                        sources.Play();
                     }
                     break;
 
-                case enum_RumahKiDalang.Laci:
+                case enum_RumahKiDalang.PintuRuang:
                     player = other.gameObject.GetComponent<ControllerPlayer>();
                     if (!player.CarriedSomthing) return;
                     if (player.ItemCarried == "Kalung")
                     {
                         Animator laci = go_current.GetComponent<Animator>();
-                        laci.SetTrigger("isOpenPintuLaci");
+                        laci.SetTrigger("isOpen");
                         player.ItemKulon();
-                        EventsManager.current.CheckKulonProgres(3);
+                        sources.Play();
                     }
                     break;
 
