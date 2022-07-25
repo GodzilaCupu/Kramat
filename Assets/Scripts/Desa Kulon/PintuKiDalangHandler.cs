@@ -14,10 +14,11 @@ public class PintuKiDalangHandler : MonoBehaviour
     [SerializeField] private enum_RumahKiDalang status;
     [SerializeField] private GameObject go_current;
     [SerializeField] private AudioSource sources;
-    private ControllerPlayer player;
+    private HandleposHandler itemCarrier;
 
     private void Start()
     {
+        itemCarrier = GameObject.Find("Handle Pos").GetComponent<HandleposHandler>();
         go_current = this.gameObject;
     }
 
@@ -28,25 +29,23 @@ public class PintuKiDalangHandler : MonoBehaviour
             switch (status)
             {
                 case enum_RumahKiDalang.Pintu:
-                    player = other.gameObject.GetComponent<ControllerPlayer>();
-                    if (!player.CarriedSomthing) return;
-                    if (player.ItemCarried == "Kunci")
+                    if (!itemCarrier.IsCarriedSomething) return;
+                    if (itemCarrier.ItemName == "Kunci")
                     {
                         Animator pintu = go_current.GetComponent<Animator>();
                         pintu.SetTrigger("isOpenPintuRumah");
-                        player.ItemKulon();
+                        itemCarrier.DestroyItem();
                         sources.Play();
                     }
                     break;
 
                 case enum_RumahKiDalang.PintuRuang:
-                    player = other.gameObject.GetComponent<ControllerPlayer>();
-                    if (!player.CarriedSomthing) return;
-                    if (player.ItemCarried == "Kalung")
+                    if (!itemCarrier.IsCarriedSomething) return;
+                    if (itemCarrier.ItemName == "Kalung")
                     {
                         Animator laci = go_current.GetComponent<Animator>();
                         laci.SetTrigger("isOpen");
-                        player.ItemKulon();
+                        itemCarrier.DestroyItem();
                         sources.Play();
                     }
                     break;

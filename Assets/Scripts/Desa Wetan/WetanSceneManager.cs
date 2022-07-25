@@ -23,6 +23,7 @@ public class WetanSceneManager : MonoBehaviour
     [SerializeField] private Light sun;
     [SerializeField] private ControllerPlayer playerController;
     [SerializeField] private TaskSawahHandler sawahHandler;
+    [SerializeField] private HandleposHandler itemCarrier;
     [SerializeField] private DialogHandler dialogHandler;
     [SerializeField] private GameObject panelFade;
     [SerializeField] private bool readybuild;
@@ -39,7 +40,9 @@ public class WetanSceneManager : MonoBehaviour
 
     private void Start()
     {
+        Database.SetLastScene(SceneManager.GetActiveScene().name);
         dialogHandler = GameObject.Find("Popup_Percakapan").GetComponent<DialogHandler>();
+        itemCarrier = GameObject.Find("Handle Pos").GetComponent<HandleposHandler>();
         playerAnim = playerController.gameObject.GetComponent<Animator>();
         RenderSettings.skybox = skyBoxReplacement[0];
         SetBangun();
@@ -62,9 +65,9 @@ public class WetanSceneManager : MonoBehaviour
 
     private void CheckProgres()
     {
+        Database.SetProgresScene("Wetan", wetanProgresID);
         switch (wetanProgresID)
         {
-
             // Bangun Tidur (Task Ke Kades)
             case 0:
                 if (dialogProgresID != 1) return;
@@ -151,19 +154,22 @@ public class WetanSceneManager : MonoBehaviour
     {
         if (panelFade.GetComponent<CanvasGroup>().alpha == 1)
         {
-            if (sawahHandler.sawahDone <= 1)
+            if (sawahHandler.sawahDone < 1)
             {
                 RenderSettings.skybox = skyBoxReplacement[0];
                 sun.intensity = 0.8f;
                 return;
             }
-            if (sawahHandler.sawahDone > 2)
+
+            if (sawahHandler.sawahDone > 3)
             {
                 RenderSettings.skybox = skyBoxReplacement[2];
                 sun.intensity = 0.4f;
                 SawahDone = true;
+                itemCarrier.DestroyItem();
                 return;
             }
+
             RenderSettings.skybox = skyBoxReplacement[1];
             sun.intensity = 1f;
         }

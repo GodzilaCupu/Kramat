@@ -21,6 +21,7 @@ public class NPC_Wetan_Handler : MonoBehaviour
     private GameObject player;
     private CameraRaycast raycast;
     private ControllerPlayer controllerPlayer;
+    private HandleposHandler itemCarrier;
 
     private int npcProgres;
     private bool canTalk;
@@ -36,6 +37,7 @@ public class NPC_Wetan_Handler : MonoBehaviour
         storyHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WetanSceneManager>();
         raycast = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraRaycast>();
         dialogHandler = GameObject.Find("Popup_Percakapan").GetComponent<DialogHandler>();
+        itemCarrier = GameObject.Find("Handle Pos").GetComponent<HandleposHandler>();
 
         minDistanceToInteraction = raycast.GetMinRange;
 
@@ -185,17 +187,6 @@ public class NPC_Wetan_Handler : MonoBehaviour
         }
     }
 
-    private void CheckIfFinished(bool isFinished, bool isSame)
-    {
-        if (!isSame)
-        {
-            EventsManager.current.CheckProgresWetan(npcProgres = isFinished == true ? npcProgres : npcProgres);
-            return;
-        }
-
-        EventsManager.current.CheckProgresWetan(npcProgres = isFinished == true ? npcProgres + 1 : npcProgres);
-    }
-
     private void KepalaDesa(int progres)
     {
         switch (progres)
@@ -212,13 +203,11 @@ public class NPC_Wetan_Handler : MonoBehaviour
                 if (!canTalk)
                     return;
 
-                if (!controllerPlayer.CarriedSomthing) return;
-                if (controllerPlayer.ItemCarried == "Cangkul") EventsManager.current.DialogWetanProgres(2);
+                if (itemCarrier.IsCarriedSomething && itemCarrier.ItemName == "Cangkul")
+                    EventsManager.current.DialogWetanProgres(2);
                 break;
 
             case ((int)enum_WetanState.MenggemburkanTanah):
-                CheckIfFinished(dialogHandler.IsFinished, true);
-
                 if (!canTalk)
                     return;
 
@@ -226,8 +215,6 @@ public class NPC_Wetan_Handler : MonoBehaviour
                 break;
 
             default:
-                CheckIfFinished(dialogHandler.IsFinished, false);
-
                 if (!canTalk)
                     return;
 
@@ -248,18 +235,14 @@ public class NPC_Wetan_Handler : MonoBehaviour
                 break;
 
             case ((int)enum_WetanState.KembaliKeKetuaAdat):
-                CheckIfFinished(dialogHandler.IsFinished, true);
-
                 if (!canTalk)
                     return;
 
-                if (!controllerPlayer.CarriedSomthing) return;
-                if (controllerPlayer.ItemCarried == "Gergaji") EventsManager.current.DialogWetanProgres(7);
+                if (itemCarrier.IsCarriedSomething && itemCarrier.ItemName == "Gergaji")
+                    EventsManager.current.DialogWetanProgres(7);
                 break;
 
             case ((int)enum_WetanState.PergiKeBalaiDesa):
-                CheckIfFinished(dialogHandler.IsFinished, true);
-
                 if (!canTalk)
                     return;
 
@@ -267,8 +250,6 @@ public class NPC_Wetan_Handler : MonoBehaviour
                 break;
 
             default:
-                CheckIfFinished(dialogHandler.IsFinished, false);
-
                 if (!canTalk)
                     return;
 
@@ -281,8 +262,6 @@ public class NPC_Wetan_Handler : MonoBehaviour
     {
         if(progres == ((int)enum_WetanState.PergiKePakCokro))
         {
-            CheckIfFinished(dialogHandler.IsFinished, true);
-            
             if (!canTalk)
                 return; 
 
@@ -290,8 +269,6 @@ public class NPC_Wetan_Handler : MonoBehaviour
      
             return;
         }
-        CheckIfFinished(dialogHandler.IsFinished, false);
-        
         if (!canTalk)
             return; 
        
@@ -300,20 +277,14 @@ public class NPC_Wetan_Handler : MonoBehaviour
 
     private void Aji(int progres)
     {
-        if (!canTalk)
-            return;
-
         if (progres == ((int)enum_WetanState.PergiKePakAji))
         {
-            CheckIfFinished(dialogHandler.IsFinished, true);
-
             if (!canTalk)
                 return;
 
             EventsManager.current.DialogWetanProgres(6);
             return;
         }
-        CheckIfFinished(dialogHandler.IsFinished, false);
 
         if (!canTalk)
             return;

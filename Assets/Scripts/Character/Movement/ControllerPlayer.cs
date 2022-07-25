@@ -13,13 +13,6 @@ public class ControllerPlayer : MonoBehaviour
     [SerializeField] private CameraRaycast raycast;
     [SerializeField] private GameObject itemContainer;
     [SerializeField] private GameObject handPos;
-    private string itemName;
-
-    private bool isCarried = false;
-
-    public string ItemCarried { get { return itemName; } }
-    public bool CarriedSomthing { get { return isCarried; } }
-
 
     [Space(15)]
     [Header("Player Configuration")]
@@ -78,8 +71,6 @@ public class ControllerPlayer : MonoBehaviour
     [SerializeField] private float topClamp;
     [SerializeField] private float bottomClamp;
     [SerializeField] private float rotationSpeed;
-
-    public float MouseSensitivity { get { return rotationSpeed; } set { rotationSpeed = value; } }
              
 
     private float _rotationVelocity;
@@ -143,24 +134,12 @@ public class ControllerPlayer : MonoBehaviour
         Gravity();
         if(canMove == true)
             PlayerMovement();
-
-        CheckScene(scenesName);
     }
 
     private void LateUpdate()
     {
         if(canMove == true)
             CameraRotation();
-    }
-
-    private void CheckScene(enum_ScenesName name)
-    {
-        if (name == enum_ScenesName.Tutorial)
-            return;
-        if (name == enum_ScenesName.BosFight)
-            return;
-
-        GetNameItem();
     }
 
     private void SetEvents(bool isTrue)
@@ -404,7 +383,6 @@ public class ControllerPlayer : MonoBehaviour
             item.transform.GetComponent<Rigidbody>().isKinematic = true;
             item.transform.position = handPos.transform.position;
             item.transform.parent = handPos.transform;
-            isCarried = true;
             anim.SetTrigger(grabAnimatorID);
             return;
         }
@@ -417,43 +395,11 @@ public class ControllerPlayer : MonoBehaviour
         note.OpenNote();
     }
 
-    public void PlaceItem()
-    {
-        if (handPos.transform.childCount == 0) return;
-        GameObject ojb = handPos.transform.GetChild(0).gameObject;
-        ojb.transform.GetComponent<Rigidbody>().isKinematic = false;
-        ojb.transform.parent = itemContainer.transform;
-        isCarried = false;
-    }
-
-    public void ItemKulon()
-    {
-        GameObject item = handPos.transform.GetChild(0).gameObject;
-        item.transform.GetComponent<Rigidbody>().isKinematic = false;
-        item.transform.parent = itemContainer.transform;
-        Destroy(item);
-        isCarried = false;
-    }
-
-    private void GetNameItem()
-    {
-        if (handPos.transform.childCount != 1)
-            return;
-
-        itemName = handPos.transform.GetChild(0).gameObject.name;
-    }
-
     private void Attack(GameObject sesajen) => anim.SetTrigger(attactAnimationID);
     private void InspectKeris() => anim.SetTrigger(inspectAnimationID);
     #endregion
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "SawahContainner" && itemName == "Cangkul + Gagang" && other.GetComponent<SawahHandler>().isDone == false)
-        {
-            EventsManager.current.SawahTrigger(other.gameObject.GetComponent<SawahHandler>().idSawah);
-        }
-    }
+
     private void OnDrawGizmosSelected()
     {
         Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
@@ -465,4 +411,6 @@ public class ControllerPlayer : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - groundOffset, transform.position.z), groundRadius);
 
     }
+
+    
 }

@@ -21,10 +21,10 @@ public class BossFightManager : MonoBehaviour
     float currentTimer;
     public int sesajenCurrentProgres;
 
-
     void Start()
     {
         currentTimer = Timer;
+        Database.SetLastScene(SceneManager.GetActiveScene().name);
         EventsManager.current.onBosFightProgres += GetProgres;
     }
 
@@ -40,10 +40,12 @@ public class BossFightManager : MonoBehaviour
     private void GetProgres(int progres) => bosFightProgres = progres;
     private void CheckProgres(int id)
     {
+        Database.SetProgresScene("BosFight", id);
         switch (id)
         {
             case ((int)enum_GenderuwoState.Lorong):
-                fade.FadeOut();
+                if (Timer > 0f) Timer -= Time.deltaTime;
+                else fade.FadeOut();
                 break;
 
             case ((int)enum_GenderuwoState.Genderuwo1):

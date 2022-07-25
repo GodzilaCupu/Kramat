@@ -23,6 +23,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     private void Start()
     {
+        Database.SetLastScene(SceneManager.GetActiveScene().name);
         manager = GetComponent<GameManager>();
     }
 
@@ -47,6 +48,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     private void CheckProgres()
     {
+        Database.SetProgresScene("Tutorial", _tutorialProgresID);
         switch (_tutorialProgresID)
         {
             case 0:

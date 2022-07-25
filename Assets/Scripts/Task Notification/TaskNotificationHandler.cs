@@ -13,6 +13,8 @@ public class TaskNotificationHandler : MonoBehaviour
 
     private string sTask;
 
+    private int dialogKulonId;
+
     private int idWetan = 0;
     private int idKulon = 0;
     private int idBosFight = 0;
@@ -82,6 +84,7 @@ public class TaskNotificationHandler : MonoBehaviour
 
                 case enum_ScenesName.DesaKulon:
                     EventsManager.current.onKulonProgres += Current_onKulonProgres;
+                    EventsManager.current.onKulonPlayDialog += (v) => dialogKulonId = v;
                     canChange = currentProgres < idKulon ? true : false;
                     break;
 
@@ -101,6 +104,8 @@ public class TaskNotificationHandler : MonoBehaviour
 
             case enum_ScenesName.DesaKulon:
                 EventsManager.current.onKulonProgres -= Current_onKulonProgres;
+                EventsManager.current.onKulonPlayDialog -= (v) => dialogKulonId = v;
+
                 break;
 
             case enum_ScenesName.BosFight:
@@ -145,7 +150,7 @@ public class TaskNotificationHandler : MonoBehaviour
     {
         if (nameCurrentScene != enum_ScenesName.DesaKulon) return;
 
-        if(currentProgres < 1)
+        if(dialogKulonId < 1)
         {
             cgTask.gameObject.SetActive(false);
             cgTask.alpha = 0;

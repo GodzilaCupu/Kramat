@@ -199,7 +199,7 @@ public class DialogHandler : MonoBehaviour
     private void NextDialog()
     {
         if (CustomInputMap.current.GetDialogSkip() && canNext && !isPlayingAudio)
-            //if (CustomInputMap.current.GetDialogSkip() && canNext)
+        //if (CustomInputMap.current.GetDialogSkip() && canNext)
         {
             countID++;
             isAlreadyPlay = false;
@@ -230,6 +230,7 @@ public class DialogHandler : MonoBehaviour
         {
             isFinished = false;
             SetActivePanel();
+            PlayDialog();
         }
 
         PlayDialog();

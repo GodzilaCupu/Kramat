@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{104EE6A6-319C-39A9-FE15-7D843244CDD8}</ProjectGuid>
+    <ProjectGuid>{1A8A818E-5CE7-9072-4203-523CB98FC93A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</AssemblyName>
@@ -624,7 +624,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{3DE03A12-2F7E-600B-0A1A-03AB59D64511}</Project>
+      <Project>{724AE864-9F24-E5C7-03BF-CF2270B8C81A}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>

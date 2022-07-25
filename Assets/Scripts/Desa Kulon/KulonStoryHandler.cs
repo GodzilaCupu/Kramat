@@ -14,12 +14,14 @@ public class KulonStoryHandler : MonoBehaviour
     [SerializeField] private CanvasGroup cg_fade;
     [SerializeField] private GameObject handpos;
 
+    float timer = 4f;
     private int progresID;
     private int dialogProgresID;
 
     public int ProgresID { get { return progresID; } }
     void Start()
     {
+        Database.SetLastScene(SceneManager.GetActiveScene().name);
         handpos = GameObject.Find("Handle Pos");
         noteHandler = GameObject.Find("Panel_Note").GetComponent<NoteHandler>();
         dialogHandler = GameObject.Find("Popup_Percakapan").GetComponent<DialogHandler>();
@@ -42,12 +44,15 @@ public class KulonStoryHandler : MonoBehaviour
         EventsManager.current.SetActivationMovement(false);
         cg_transition = go_panelTransition.GetComponent<CanvasGroup>();
 
-        LeanTween.alphaCanvas(cg_transition, 0, 1f);
-        if(cg_transition.alpha == 1)
+        if(timer > 0f)
         {
-            go_panelTransition.SetActive(false);
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            LeanTween.alphaCanvas(cg_fade, 0, 0.5f);
+            if (cg_fade.alpha == 0) go_panelTransition.SetActive(false);
             EventsManager.current.SetActivationMovement(true);
-            return;
         }
     }
 
@@ -59,20 +64,11 @@ public class KulonStoryHandler : MonoBehaviour
 
     private void CheckTask()
     {
+        Database.SetProgresScene("Kulon", progresID);
         switch (progresID)
         {
             case 0:
-                if(cg_transition.alpha == 1)
-                {
-                    LeanTween.alphaCanvas(cg_transition, 0, 1f);
-                    return;
-                }
-                if (cg_transition.alpha == 1)
-                {
-                    go_panelTransition.SetActive(false);
-                    EventsManager.current.SetActivationMovement(true);
-                    return;
-                }
+                SetTransistion();
                 if (dialogProgresID != 2) return;
                 if (!dialogHandler.IsFinished) return;
                 EventsManager.current.CheckKulonProgres(1);

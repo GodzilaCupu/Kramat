@@ -22,35 +22,25 @@ public class MainMenuButtonsHandler : MonoBehaviour
     GameManager manager;
     private bool alreadyPlay;
 
+    private void Awake()
+    {
+        Screen.fullScreen = true;
+    }
+
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         CallingButtons();
-        CheckContinue();
     }
 
     private void Update()
     {
-        CheckContinue();
-    }
-
-    private void CheckContinue()
-    {
-        if(manager.LastProgresTutorial() == 0)
+        if(Database.GetProgresScene("Tutorial") < 1)
         {
-            alreadyPlay = false;
+            btn_MainMenu[1].gameObject.SetActive(false);
             return;
         }
-
-        alreadyPlay = true;
-
-        if (!alreadyPlay)
-        { 
-            btn_MainMenu[0].gameObject.SetActive(false);
-            return;
-        }
-
-        btn_MainMenu[0].gameObject.SetActive(true);
+        btn_MainMenu[1].gameObject.SetActive(true);
     }
 
     private void CallingButtons()
@@ -96,6 +86,7 @@ public class MainMenuButtonsHandler : MonoBehaviour
     {
         string lastScene = Database.GetLastScene();
         SceneManager.LoadScene(lastScene);
+        print(lastScene);
     }
     
     private void OpenSettingsPanel() => EventsManager.current.OpenPanelSettings();

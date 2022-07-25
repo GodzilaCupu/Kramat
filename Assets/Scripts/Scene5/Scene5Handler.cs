@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+
+public class Scene5Handler : MonoBehaviour
+{
+    [SerializeField] private GameObject pausedPanel;
+    [SerializeField] private VideoPlayer vPlayer;
+    [SerializeField] private GameObject Credits;
+
+    [SerializeField] AudioSource aSource;
+    bool isDone = false;
+    bool playCredits = false;
+    float playTime;
+
+    private void Start()
+    {
+        aSource.loop = true;
+        aSource.Play();
+        vPlayer.Play();
+        playTime = vPlayer.frameCount - 1;
+    }
+
+    private void Update()
+    {
+        CheckPause();
+        print(vPlayer.frame);
+        if (vPlayer.frame == playTime)
+            PlayCredits();
+    }
+
+    private void PlayCredits()
+    {
+        if (playCredits) return;
+
+        EventsManager.current.OpenPanelCredits();
+        playCredits = true;
+        isDone = true;
+    }
+
+    private void CheckPause()
+    {
+        if(!pausedPanel.activeInHierarchy)
+        {
+            if (isDone) 
+            {
+                aSource.Play();
+
+                if (isDone && LeanTween.tweensRunning > 0) return;
+                SceneManager.LoadScene("MainMenu");
+                return;
+            }
+
+            if(vPlayer.isPlaying) return;
+            vPlayer.Play();
+            aSource.Play();
+            return;
+        }
+        vPlayer.Pause();
+        aSource.Pause();
+
+    }
+}

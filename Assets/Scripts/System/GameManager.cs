@@ -7,16 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Transform PlayerPos;
 
-    private string sceneName;
-
-    private void Start()
-    {
-        sceneName = SceneManager.GetActiveScene().name;
-        Database.SetLastScene(sceneName);
-    }
-
     public void SavePlayerPos() => Database.SetPlayerPos(PlayerPos.position);
-
     public void SaveProgres(string thisSceneName, int currentProgres) => Database.SetProgresScene(thisSceneName, currentProgres);
     public void LoadPlayerPos(Transform target) => target.position = Database.GetPlayerPos();
 

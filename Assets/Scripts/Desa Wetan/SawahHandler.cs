@@ -15,6 +15,8 @@ public class SawahHandler : MonoBehaviour
     public bool canplay;
     public bool isDone = false;
 
+    private HandleposHandler itemCarrier;
+
     private void OnDisable()
     {
         EventsManager.current.onWetanProgres -= GetProgres;
@@ -22,9 +24,11 @@ public class SawahHandler : MonoBehaviour
     }
     private void Start()
     {
-        EventsManager.current.onWetanProgres += GetProgres;
         petakSawah = this.transform.GetChild(0).gameObject;
         petakSawah.SetActive(false);
+
+        itemCarrier = GameObject.Find("Handle Pos").GetComponent<HandleposHandler>();
+        EventsManager.current.onWetanProgres += GetProgres;
     }
     private void GetProgres(int progres)
     {
@@ -34,10 +38,8 @@ public class SawahHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && !isDone )
-        {
+        if(other.tag == "Player" && itemCarrier.IsCarriedSomething && itemCarrier.ItemName == "Cangkul" && !isDone )
             SetActivePanel(idSawah);
-        }
     }
 
     private void SetActivePanel(int id)
