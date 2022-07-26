@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a9b1f3c2f34ec4aa3efece58165bdf, type: 3}
+  m_Name: Sound Designner
+  m_EditorClassIdentifier: 
+  id: 5
+  _jobdeskSize: 50
+  _titleSize: 40
+  _nameSize: 35
+  _colorJobdesk: {r: 0.22352943, g: 0.85098046, b: 0.8862746, a: 1}
+  _colorTitle: {r: 0.87058824, g: 0.6784314, b: 0.4627451, a: 1}
+  _colorName: {r: 0.7830189, g: 0.68960077, b: 0.5577163, a: 1}
+  _stringJobdesk: Sound & Effect Desinger
+  _stringTitle:
+  - Sound Effect
+  - Background Music
+  _stringName:
+  - Fahmi Bagus Wibowo
+  - Fahmi Bagus Wibowo
+  _contentText:
+  - '<color=#430505FF>Sound Effect</color>
+
+    <color=#9EE023FF>Fahmi Bagus Wibowo</color>
+
+'
+  - '<color=#430505FF>Background Music</color>
+
+    <color=#9EE023FF>Fahmi Bagus
+    Wibowo</color>
+
+'

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082771d7fddc7a24ba8db490f11e41c8, type: 3}
+  m_Name: Anto_Tutorial
+  m_EditorClassIdentifier: 
+  DialogName: Anto
+  DialogWord:
+  - 'Ini tanda petunjuk jalan desa sudah rusak bukannya di benerin dah,
+
+    gimana
+    orang mau tau mana jalan yang  bener'
+  - Yasudah kalau begitu mari kita jalan
+  - "Loh, bukannya ini tanda petunjuk jalan yang tadi ? \nkok ada lagi ?"
+  DialogSFX:
+  - {fileID: 8300000, guid: 09e941a35d03881488f96abf9b5b5521, type: 3}
+  - {fileID: 8300000, guid: e8895b92c8d98094ca65e57fb50198c0, type: 3}
+  - {fileID: 8300000, guid: 637153a633bdfba43975a47f618e5695, type: 3}

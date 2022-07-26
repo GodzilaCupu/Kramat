@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082771d7fddc7a24ba8db490f11e41c8, type: 3}
+  m_Name: Genderuwo
+  m_EditorClassIdentifier: 
+  DialogName: Genderuwo
+  DialogWord:
+  - Selamat datang di kerajaanku wahai anak manusia, ada perlu apa kau kemari ?
+  - Tidak usah berbasa basi, apa tujuan mu kemari !?
+  - APA MAKSUDMU ? MEREKA SUDAH MENGHINA WILAYAH KU
+  - SAYA BEBAS MELAKUKAN APAPUN, KARENA INI ADALAH WILAYAHKU
+  - KAU PASTI SUDAH MELIHAT DESA ITU PARA PENDUDUK SANGAT TAAT KEPADA KU, MEREKA
+    MEMBERIKAN PERSEMBAHAN YANG MEMBUAT KU KUAT
+  - AKU ADALAH PENGUASA DISINI DAN KAU BERANI SEKALI MENYURUH KU
+  - DASAR MANUSIA BODOH HAHAHAHA
+  - SUDAH TIDAK BISA KU MAAFKAN, MEREKA SUDAH MEMBUATKU MURKA
+  - TIDAK AKU TAK PERCAYA INI, KENAPA KAU BISA MENGALAHKAN KU !?
+  DialogSFX:
+  - {fileID: 8300000, guid: 81bc286e03917d140a36558830a4b82c, type: 3}
+  - {fileID: 8300000, guid: 65af26c2f2549d84d9000b93589bab22, type: 3}
+  - {fileID: 8300000, guid: e8f2dc9dea0e4fd4b97182ccc72d5d49, type: 3}
+  - {fileID: 8300000, guid: 40d122a8333ba284c99adc34c0949611, type: 3}
+  - {fileID: 8300000, guid: 0b6b8b5fd32f7e14bb3d530b41b5b49d, type: 3}
+  - {fileID: 8300000, guid: ea889a7abceac3545be29b2679984013, type: 3}
+  - {fileID: 8300000, guid: 712b7b4613ef8ad4cb637b2e444ec9b8, type: 3}
+  - {fileID: 8300000, guid: f292fe81e737a734c8a1588b1ab4541f, type: 3}
+  - {fileID: 8300000, guid: 0b6b8b5fd32f7e14bb3d530b41b5b49d, type: 3}
