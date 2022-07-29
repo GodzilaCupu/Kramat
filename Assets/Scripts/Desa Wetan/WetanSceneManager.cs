@@ -126,8 +126,7 @@ public class WetanSceneManager : MonoBehaviour
                 break;
 
             case 8:
-                if (cgFade.alpha == 1)
-                    SceneManager.LoadScene("Kulon");
+                SceneManager.LoadScene("Kulon");
                 break;
         }
     }

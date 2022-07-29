@@ -16,11 +16,11 @@ public class SetanAnakKecilHandler : MonoBehaviour
     [Header("Setan Anak Kecil Komponen"), Space(10)]
     [SerializeField] private Ki_DalangHandler kiDalanghandler;
     
-    [Tooltip("0 = resetPos," +
-             "1 = Inside House 4," +
-             "2 = Pointing Drawer," +
+    [Tooltip("0 = resetPos" +
+             "1 = Inside House 4" +
+             "2 = Pointing Drawer" +
              "3 = StartToBosFight" +
-             "4 = BosfightFinish  ")]
+             "4 = BosfightFinish")]
     [SerializeField] private List<Transform> tr_waypoint;
     [SerializeField] private NavMeshAgent nva_this;
     [SerializeField] private Animator anim_this;
@@ -83,7 +83,6 @@ public class SetanAnakKecilHandler : MonoBehaviour
 
             case 3:
                 WalkingToBosFight();
-                CheckInDestination(tr_waypoint[4],f_minRangeToDestination);
                 break;
         }
     }
@@ -130,8 +129,6 @@ public class SetanAnakKecilHandler : MonoBehaviour
         // Jalan KeTujuan
         nva_this.isStopped = false;
         anim_this.SetBool(walkAnimtoHash, true);
-
-
     }
     
     private void PointingDrawer()

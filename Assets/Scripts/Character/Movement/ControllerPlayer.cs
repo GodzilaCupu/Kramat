@@ -16,6 +16,7 @@ public class ControllerPlayer : MonoBehaviour
 
     [Space(15)]
     [Header("Player Configuration")]
+    [SerializeField] Light senter;
     [Space(5), SerializeField] private bool canMove;
 
     [SerializeField] private float playerSpeedWalk;
@@ -113,6 +114,8 @@ public class ControllerPlayer : MonoBehaviour
 
     void Start()
     {
+        senter = GameObject.Find("Senter").GetComponent<Light>();
+        senter.enabled = false;
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         GetAnimatorParamater();
@@ -362,13 +365,10 @@ public class ControllerPlayer : MonoBehaviour
     #region Player Feature
     private void FiturSenter()
     {
-        bool isPressed = CustomInputMap.current.GetPlayerSenter();
-
-        if (isPressed)
-            EventsManager.current.FlashlightTrigger();
-
-        Debug.Log("Key Senter = " + isPressed);
+        if (CustomInputMap.current.GetPlayerSenter()) 
+            senter.enabled = senter.enabled == false ? senter.enabled = true : senter.enabled = false;
     }
+
 
     private void GrabItem(GameObject item)
     {

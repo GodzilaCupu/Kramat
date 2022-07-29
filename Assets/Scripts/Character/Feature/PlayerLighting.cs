@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Light))]
 public class PlayerLighting : MonoBehaviour
 {
-    private Light senter;
+    [SerializeField] private Light senter;
     private bool isBlinking = false;
 
     [SerializeField] private float timerToBlink;
@@ -15,14 +15,11 @@ public class PlayerLighting : MonoBehaviour
 
     private void Start()
     {
-        senter = gameObject.GetComponent<Light>();
         blinkTime = timerToBlink;
         EventsManager.current.onFlashlightTrigger += SetLighting;
         if (SceneManager.GetActiveScene().name == "Kulon")
-        {
-            EventsManager.current.onFlashlightBlinking += (v) => isBlinking = v ;
-            return;
-        }
+            EventsManager.current.onFlashlightBlinking += (v) => isBlinking = v;
+
     }
 
     private void Update()
@@ -34,10 +31,8 @@ public class PlayerLighting : MonoBehaviour
     {
         EventsManager.current.onFlashlightTrigger -= SetLighting;
         if (SceneManager.GetActiveScene().name == "Kulon")
-        {
             EventsManager.current.onFlashlightBlinking -= (v) => isBlinking = v;
-            return;
-        }
+
     }
 
     void SetLighting() => senter.enabled = senter.enabled == true ? senter.enabled = false : senter.enabled = true;

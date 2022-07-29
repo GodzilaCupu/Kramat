@@ -56,14 +56,14 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\SimulatorProviderSettingsEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\SimulatorProviderSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\SimulatorProviderLoader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\SimulatorAdaptivePerformanceSubsystem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\SimulatorProviderConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\SimulatorProviderSettingsEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\SimulatorProviderSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\SimulatorProviderLoader.cs" />
+    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\SimulatorAdaptivePerformanceSubsystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\SimulatorProviderConstants.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.3\Editor\Provider\Unity.AdaptivePerformance.Simulator.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.adaptiveperformance@2.2.4\Editor\Provider\Unity.AdaptivePerformance.Simulator.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -679,13 +679,13 @@
       <Project>{9BD65F27-EBAC-8F22-4524-510DA83D4CF7}</Project>
       <Name>Unity.AdaptivePerformance.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{2501CA4A-0D2D-1240-E476-3BA10A979DB6}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{984AA37A-CBAE-D857-C67B-D28FF4FF9C51}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{2501CA4A-0D2D-1240-E476-3BA10A979DB6}</Project>
+      <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
       <Project>{BB9F3BCD-5E46-8893-0CE6-4513C9D1AF28}</Project>

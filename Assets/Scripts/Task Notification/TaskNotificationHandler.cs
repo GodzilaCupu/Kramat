@@ -150,15 +150,15 @@ public class TaskNotificationHandler : MonoBehaviour
     {
         if (nameCurrentScene != enum_ScenesName.DesaKulon) return;
 
-        if(dialogKulonId < 1)
+        if(dialogKulonId > 1)
         {
-            cgTask.gameObject.SetActive(false);
-            cgTask.alpha = 0;
+            cgTask.gameObject.SetActive(true);
+            cgTask.alpha = 1;
             return;
         }
+        cgTask.gameObject.SetActive(false);
+        cgTask.alpha = 0;
 
-        cgTask.gameObject.SetActive(true);
-        cgTask.alpha = 1;
     }
 
     private void CheckBosFightTask()

@@ -1,65 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TransitionHandler : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI t_transition;
+    [Header("Transition Settings")]
     [SerializeField] private float timer;
-    private bool canStoop = false;
+    [SerializeField] private TextMeshProUGUI t_transition;
+    private float currentTimer;
+    private bool isDone;
 
-    [SerializeField, TextArea(3, 5)] private string s_transition;
+    [Header("Transition Component")]
     private CanvasGroup cg_transition;
+    [SerializeField, TextArea(3, 5)] private string s_transition;
 
-    private int kulonProgres;
-    
-    void Start()
+    private void Start()
     {
-        cg_transition = GetComponent<CanvasGroup>();
-        t_transition = gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        t_transition.text = s_transition;
-        EventsManager.current.onKulonProgres += CheckProgres;
+        cg_transition = gameObject.transform.GetChild(0).GetComponent<CanvasGroup>();
+        currentTimer = timer;
     }
 
-    private void OnDisable()
+    public void StartTransition()
     {
-        EventsManager.current.onKulonProgres -= CheckProgres;
-    }
-
-    private void Update()
-    {
-        if (timer > 0f)
+        if(currentTimer > 0)
         {
-            StartDisplayTransition(kulonProgres);
-            timer -= Time.deltaTime;
+            currentTimer -= Time.deltaTime;
+            EventsManager.current.SetActivationMovement(false);
         }
         else
         {
-            timer = 0f;
-            StopDisplayTransition(kulonProgres);
+            if (isDone) return;
+
+            EventsManager.current.SetActivationMovement(true);
+            LeanTween.alphaCanvas(cg_transition, 0, 0.5f);
+            isDone = true;
         }
     }
 
-    private void CheckProgres(int progres) => kulonProgres = progres;
-
-    private void StartDisplayTransition(int progres)
+    public void FinishTransition()
     {
-        if (progres != 0) return;
-
-        LeanTween.alphaCanvas(cg_transition, 1, 0.5f);
-        if (cg_transition.alpha == 1)
-            canStoop = true;  
-    }
-
-    private void StopDisplayTransition(int progres)
-    {
-        if (!canStoop)
-            return;
-
-        LeanTween.alphaCanvas(cg_transition, 0, 0.5f);
-        if (cg_transition.alpha == 0)
-            this.gameObject.SetActive(false);
-
+        if(cg_transition.alpha == 0)
+        {
+            Database.SetProgresScene("Kulon", 4);
+            LeanTween.alphaCanvas(cg_transition, 1, 0.5f);
+            EventsManager.current.SetActivationMovement(false);
+        }
+        else
+            SceneManager.LoadScene("BosFight");
     }
 }

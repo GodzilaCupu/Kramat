@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2023192101}
-  m_IndirectSpecularColor: {r: 0.0010099938, g: 0.0015517023, b: 0.0019544302, a: 1}
+  m_IndirectSpecularColor: {r: 0.013267115, g: 0.020387162, b: 0.02566132, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2678,6 +2678,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8907261666703684417, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
+      propertyPath: senter
+      value: 
+      objectReference: {fileID: 719931408}
     - target: {fileID: 8907261667310455492, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
       propertyPath: m_Lens.FarClipPlane
       value: 200
@@ -2797,6 +2801,11 @@ MonoBehaviour:
 --- !u!1 &719931407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8907261667991842664, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
+  m_PrefabInstance: {fileID: 719931404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &719931408 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8907261666703684422, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
   m_PrefabInstance: {fileID: 719931404}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &719931413 stripped

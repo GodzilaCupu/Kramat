@@ -7,11 +7,20 @@
       "dependencies": {}
     },
     "com.unity.adaptiveperformance": {
-      "version": "2.2.3",
+      "version": "2.2.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.subsystemregistration": "1.1.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.adaptiveperformance.samsung.android": {
+      "version": "2.2.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.adaptiveperformance": "2.2.4"
       },
       "url": "https://packages.unity.com"
     },
