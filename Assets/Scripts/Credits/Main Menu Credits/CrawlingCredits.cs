@@ -51,7 +51,6 @@ public class CrawlingCredits : MonoBehaviour
 
     private void Update()
     {
-        print(LeanTween.tweensRunning + " animate");
         if (SceneManager.GetActiveScene().name == "MainMenu") return;
         if (paused.activeInHierarchy)
         {

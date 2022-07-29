@@ -1703,7 +1703,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.48
-  far clip plane: 200
+  far clip plane: 300
   field of view: 53.130108
   orthographic: 0
   orthographic size: 5
@@ -5662,6 +5662,10 @@ PrefabInstance:
       value: Panel_Paused
       objectReference: {fileID: 0}
     - target: {fileID: 7227312229288197526, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
+      propertyPath: cheat
+      value: Kulon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227312229288197526, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1790412107}
@@ -5748,6 +5752,14 @@ PrefabInstance:
     - target: {fileID: 7227312229288197527, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227312229767430294, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112244537712946640, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
@@ -12632,7 +12644,7 @@ PrefabInstance:
       objectReference: {fileID: 915304802}
     - target: {fileID: 8907261667310455492, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
       propertyPath: m_Lens.FarClipPlane
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8907261667310455498, guid: 3de79b64fdc34674d8562ef62c739afa, type: 3}
       propertyPath: m_LocalPosition.x

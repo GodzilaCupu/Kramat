@@ -6,11 +6,11 @@ using UnityEngine.Video;
 
 public class Scene5Handler : MonoBehaviour
 {
-    [SerializeField] private GameObject pausedPanel;
+    [SerializeField] AudioSource aSource;
     [SerializeField] private VideoPlayer vPlayer;
+    [SerializeField] private GameObject pausedPanel;
     [SerializeField] private GameObject Credits;
 
-    [SerializeField] AudioSource aSource;
     bool isDone = false;
     bool playCredits = false;
     float playTime;
@@ -26,7 +26,6 @@ public class Scene5Handler : MonoBehaviour
     private void Update()
     {
         CheckPause();
-        print(vPlayer.frame);
         if (vPlayer.frame == playTime)
             PlayCredits();
     }

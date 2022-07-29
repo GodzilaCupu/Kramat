@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PausedHandler : MonoBehaviour
 {
+    [SerializeField] private string cheat;
     [SerializeField] private GameObject panel_pause;
     [SerializeField] private GameManager manager;
     [SerializeField,Tooltip("0 : Resume ; 1 : Settings ; 2 : MainMenu ")] private Button[] btn_pause;

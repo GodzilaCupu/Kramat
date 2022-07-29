@@ -311,6 +311,10 @@ PrefabInstance:
       value: Panel_Paused
       objectReference: {fileID: 0}
     - target: {fileID: 7227312229288197526, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
+      propertyPath: cheat
+      value: Wetan
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227312229288197526, guid: 15d914da23ca7c247bb8ed9c01610830, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 474974959}

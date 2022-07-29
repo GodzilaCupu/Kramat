@@ -23,7 +23,6 @@ public class SwitchingPostProHandler : MonoBehaviour
     [SerializeField] private bool isOn_PosPro;
     [SerializeField] private Volume posProData;
 
-    private VolumeProfile currentProfile;
     [SerializeField] private ColorAdjustments color;
 
     [SerializeField] private VolumeProfile[] posProProfileData;
