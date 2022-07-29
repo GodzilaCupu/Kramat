@@ -12,6 +12,7 @@ public class KalungHandler : MonoBehaviour
     private void Start()
     {
         animKidalang = goKidalang.GetComponent<Animator>();
+        this.gameObject.transform.parent = goItemContainner.transform;
     }
 
     // Update is called once per frame
@@ -19,7 +20,6 @@ public class KalungHandler : MonoBehaviour
     {
         if (animKidalang.enabled) return;
 
-        this.gameObject.transform.parent = goItemContainner.transform;
         if (gameObject.GetComponent<Rigidbody>() != null) return;
         gameObject.AddComponent<Rigidbody>();
     }

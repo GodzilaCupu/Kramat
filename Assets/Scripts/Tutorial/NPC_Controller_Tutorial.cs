@@ -44,11 +44,11 @@ public class NPC_Controller_Tutorial : MonoBehaviour
         if (distanceToPlayer > maxDistance)
         {
             anim.SetBool("isWalking", false);
-            nva_npcAgent.Stop();
+            nva_npcAgent.isStopped = true;
             return;
         }
         anim.SetBool("isWalking", true);
-        nva_npcAgent.Resume();
+        nva_npcAgent.isStopped = false;
     }
 
     private void WalkToTarget()

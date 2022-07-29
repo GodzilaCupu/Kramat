@@ -11274,7 +11274,6 @@ GameObject:
   - component: {fileID: 431125761}
   - component: {fileID: 431125760}
   - component: {fileID: 431125759}
-  - component: {fileID: 431125758}
   - component: {fileID: 431125757}
   m_Layer: 0
   m_Name: Kalung
@@ -11310,20 +11309,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15007444, y: 0.19505048, z: 0.093478255}
   m_Center: {x: 0.0009725405, y: -0.039969742, z: 1.4184482}
---- !u!114 &431125758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431125755}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc06121980c93c14394735d8db593409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goKidalang: {fileID: 1663496031}
-  goItemContainner: {fileID: 0}
 --- !u!114 &431125759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23572,7 +23557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &858874618
 Transform:
   m_ObjectHideFlags: 0
@@ -23581,7 +23566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858874617}
   m_LocalRotation: {x: -0, y: 0.70710623, z: -0, w: 0.70710737}
-  m_LocalPosition: {x: 369.98, y: -0.164, z: 188.57498}
+  m_LocalPosition: {x: 369.98, y: -0.162, z: 188.57498}
   m_LocalScale: {x: 8.62771, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -24461,7 +24446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &899444724
 Transform:
   m_ObjectHideFlags: 0
@@ -24470,7 +24455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899444723}
   m_LocalRotation: {x: 0.000000029900576, y: 0.41030097, z: -0.000000029900615, w: 0.9119502}
-  m_LocalPosition: {x: 417.6439, y: -0.164, z: 274.3763}
+  m_LocalPosition: {x: 417.6439, y: -0.162, z: 274.3763}
   m_LocalScale: {x: 0.6858265, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -27455,7 +27440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1023546451
 Transform:
   m_ObjectHideFlags: 0
@@ -27464,7 +27449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023546450}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 317.8, y: -0.164, z: 173.326}
+  m_LocalPosition: {x: 317.8, y: -0.162, z: 173.326}
   m_LocalScale: {x: 5.5793552, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -30078,7 +30063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1124881549
 Transform:
   m_ObjectHideFlags: 0
@@ -30087,7 +30072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124881548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 343.9243, y: -0.164, z: 145.6881}
+  m_LocalPosition: {x: 343.9243, y: -0.162, z: 145.6881}
   m_LocalScale: {x: 5.351808, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -34815,9 +34800,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -39030,7 +39015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1407960925
 Transform:
   m_ObjectHideFlags: 0
@@ -39039,7 +39024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407960924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 220.4414, y: -0.164, z: 200.0541}
+  m_LocalPosition: {x: 220.4414, y: -0.101, z: 200.0541}
   m_LocalScale: {x: 19.581146, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -40001,7 +39986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 10
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1447934865
 Transform:
   m_ObjectHideFlags: 0
@@ -40010,7 +39995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447934864}
   m_LocalRotation: {x: -0, y: 0.9238791, z: -0, w: 0.3826846}
-  m_LocalPosition: {x: 396, y: -0.164, z: 256.8}
+  m_LocalPosition: {x: 396, y: -0.162, z: 256.8}
   m_LocalScale: {x: 7.407493, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 534654616}
@@ -53095,6 +53080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 2
   t_transition: {fileID: 1182592875}
+  cg_transition: {fileID: 1254528996}
   s_transition: 'Desa Kulon
 
     Kamis Wage, 24 Juni 1993

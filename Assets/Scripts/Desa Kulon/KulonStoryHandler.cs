@@ -11,7 +11,6 @@ public class KulonStoryHandler : MonoBehaviour
     [SerializeField] private TransitionHandler transitionHandler;
     [SerializeField] private GameObject handpos;
 
-    float timer = 4f;
     private int progresID;
     private int dialogProgresID;
 
@@ -22,6 +21,7 @@ public class KulonStoryHandler : MonoBehaviour
         handpos = GameObject.Find("Handle Pos");
         noteHandler = GameObject.Find("Panel_Note").GetComponent<NoteHandler>();
         dialogHandler = GameObject.Find("Popup_Percakapan").GetComponent<DialogHandler>();
+        transitionHandler.StartTransition();
         EventsManager.current.onKulonProgres += (v) => progresID = v;
         EventsManager.current.onKulonPlayDialog += (v) => dialogProgresID = v;
     }
@@ -29,7 +29,7 @@ public class KulonStoryHandler : MonoBehaviour
     private void OnDisable()
     {
         EventsManager.current.onKulonProgres -= (v) => progresID = v;
-
+        EventsManager.current.onKulonPlayDialog -= (v) => dialogProgresID = v;
     }
 
     // Update is called once per frame
@@ -43,7 +43,6 @@ public class KulonStoryHandler : MonoBehaviour
         switch (progresID)
         {
             case 0:
-                transitionHandler.StartTransition();
                 if (dialogProgresID != 2) return;
                 if (!dialogHandler.IsFinished) return;
                 EventsManager.current.CheckKulonProgres(1);
@@ -53,8 +52,8 @@ public class KulonStoryHandler : MonoBehaviour
             case 1:
                 // Buka Pintu (Ambil Kunci Dulu)
                 if (!noteHandler.AlreadyOpen) return;
-                EventsManager.current.CheckKulonProgres(2);
                 Database.SetProgresScene("Kulon", progresID);
+                EventsManager.current.CheckKulonProgres(2);
                 break;
 
             case 2:

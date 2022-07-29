@@ -124,10 +124,6 @@ public class WetanSceneManager : MonoBehaviour
                 if (!dialogHandler.IsFinished) return;
                 EventsManager.current.CheckProgresWetan(8);
                 break;
-
-            case 8:
-                SceneManager.LoadScene("Kulon");
-                break;
         }
     }
 

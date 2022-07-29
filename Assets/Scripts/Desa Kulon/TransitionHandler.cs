@@ -13,12 +13,12 @@ public class TransitionHandler : MonoBehaviour
     private bool isDone;
 
     [Header("Transition Component")]
-    private CanvasGroup cg_transition;
+    [SerializeField] private CanvasGroup cg_transition;
     [SerializeField, TextArea(3, 5)] private string s_transition;
 
     private void Start()
     {
-        cg_transition = gameObject.transform.GetChild(0).GetComponent<CanvasGroup>();
+        //cg_transition = gameObject.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>();
         currentTimer = timer;
     }
 

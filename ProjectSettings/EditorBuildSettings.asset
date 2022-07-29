@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu/MainMenu.unity
     guid: e69a331421f1d5441a66c95822b6c2e7
   - enabled: 1
     path: Assets/Scenes/Tutorial/V2/Tutorial.unity
     guid: c077f2fea9dfec145b61ce2491a403ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Desa Wetan/v1/Wetan.unity
     guid: 7a255c2ddb4dbe74bb553907bd545343
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Desa Kulon/v.2/Kulon.unity
     guid: 426f081d991bc8a468a50e86d3eb105c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Bos Fight/v.1/BosFight.unity
     guid: 598c78732938af14eb860458ac32ee26
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Scene5.unity
     guid: d2e5cb93c5d685e42b21460d39d71c93
   m_configObjects:

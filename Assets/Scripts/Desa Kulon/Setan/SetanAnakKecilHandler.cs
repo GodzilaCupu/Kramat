@@ -61,7 +61,6 @@ public class SetanAnakKecilHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TriggerSenter();
         CheckTask(kulonProgres);
     }
 
@@ -86,17 +85,6 @@ public class SetanAnakKecilHandler : MonoBehaviour
                 break;
         }
     }
-
-    private void TriggerSenter()
-    {
-        if(f_distanceToPlayer() < 1.5f)
-        {
-            EventsManager.current.SetFlashlightBlink(true);
-            return;
-        }
-        EventsManager.current.SetFlashlightBlink(false);
-    }
-
     private void CheckInDestination(Transform destination, float minRange)
     {
         float targetDistance = Vector3.Distance(nva_this.transform.position, destination.transform.position);
