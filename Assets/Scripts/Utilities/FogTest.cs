@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class FogTest : MonoBehaviour
 {
-    [SerializeField] private ForwardRendererData fr_data;
+    [SerializeField] private UniversalRendererData fr_data;
     [SerializeField] private ScriptableRendererFeature[] features;
     [SerializeField] private enum_ScenesName sceneName;
 

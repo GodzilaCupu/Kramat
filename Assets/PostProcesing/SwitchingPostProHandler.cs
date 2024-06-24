@@ -14,7 +14,7 @@ public class SwitchingPostProHandler : MonoBehaviour
 
     [Header("Fog Component"),Space(10)]
     [SerializeField] private bool isOn_Fog;
-    [SerializeField] private ForwardRendererData fr_data;
+    [SerializeField] private UniversalRendererData fr_data;
     [SerializeField] private ScriptableRendererFeature[] features;
     [SerializeField] private ScriptableRendererFeature[] FeaturesData;
     private ScriptableRendererFeature feature;
