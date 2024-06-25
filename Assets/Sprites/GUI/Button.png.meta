@@ -129,7 +129,7 @@ TextureImporter:
       213: -3799445192906511259
     second: Btn_withBox_Tamplate
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -146,10 +146,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -188,6 +190,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -199,6 +203,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -211,6 +216,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -223,6 +229,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -235,6 +242,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -247,6 +255,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -259,6 +268,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1156,9 +1179,51 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Btn_Paused: -5646349190705867672
+      Btn_Text_Credits: 8467241744927558709
+      Btn_Text_Exit: 1566552715412073297
+      Btn_Text_Gameplay: -7707917330291737424
+      Btn_Text_Graphic: -3167664012565464253
+      Btn_Text_Iya: -1257769187640015746
+      Btn_Text_Kembali: -1727787259211401930
+      Btn_Text_Lanjut: -1962688518803993622
+      Btn_Text_Lanjutkan: 2527607607167286074
+      Btn_Text_Mulai: 649223268058989734
+      Btn_Text_Pengatura: 7001558939514288092
+      Btn_Text_Pengaturan: -9000188618666376746
+      Btn_Text_Sound: -9112927591779324202
+      Btn_Text_Tidak: -2574449355943416012
+      Btn_withBox_Credits: 3483080695849883246
+      Btn_withBox_Gameplay: -7884316226445378206
+      Btn_withBox_Graphic: 5028851763982921854
+      Btn_withBox_Iya: 1149965043967199153
+      Btn_withBox_Keluar: -513853620004673297
+      Btn_withBox_Kembali: -3296422214811686936
+      Btn_withBox_Lanjut: 1666055357140064740
+      Btn_withBox_Lanjutkan: 8335653965997463283
+      Btn_withBox_Mulai: -2022265328733692931
+      Btn_withBox_Pengaturan: 8397750464773233318
+      Btn_withBox_Sound: 329179307603019822
+      Btn_withBox_Tamplate: -3799445192906511259
+      Btn_withBox_Tidak: 8202982801951292199
+      Btn_withTriangle_Credits: 1032802241139969492
+      Btn_withTriangle_Gameplay: 6751135681320707386
+      Btn_withTriangle_Graphic: -9017320334548713245
+      Btn_withTriangle_Iya: 2774136157585447902
+      Btn_withTriangle_Keluar: 6560905107333770281
+      Btn_withTriangle_Kembali: 8236786002934464123
+      Btn_withTriangle_Lanjut: 1867482156725876864
+      Btn_withTriangle_Lanjutkan: 5342558913192633760
+      Btn_withTriangle_Mulai: 5783416599399022740
+      Btn_withTriangle_Pengaturan: -3814991329465442402
+      Btn_withTriangle_Sound: 1700495067048141879
+      Btn_withTriangle_Tidak: 5383375605554606906
+      Icon_Triangle: 5428179340570738698
+      Line: -2534983082481615764
+      Text Credits to mangkus: 3692987858164446456
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
